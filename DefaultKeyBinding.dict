@@ -179,6 +179,9 @@
 	// Scroll Down
 	"~\Uf72d" = scrollPageDown:;
 	
+	// hyphenate next space and move to next word
+	"~_" = (selectWord:,moveRight:,moveRight:,deleteBackward:,insertText:,"-",moveRight:);
+	
 	// bookmark
 	"~1" = setMark:;
 	// jump to bookmark
