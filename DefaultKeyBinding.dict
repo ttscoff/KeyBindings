@@ -1,4 +1,9 @@
 {
+	// @ = Command
+	// ~ = Option
+	// ^ = Control
+	// $ = Shift (when used on non-alpha characters, otherwise, just capitalize them)
+	
 	// copy character before cursor
 	"~z" = (moveLeftAndModifySelection:, copy:, moveRight:);
 	// repeat character before cursor
@@ -158,9 +163,10 @@
 	// modify selection down
 	"@~$\Uf701" = (selectParagraph:, moveParagraphForwardAndModifySelection:);
 	
-	// TextMate Command-Return (I wish this worked in some form, but it doesn't seem to)
-	// "@\U000A" = (moveToEndOfParagraph:, insertNewline:);
-	// "@$\U000A" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
+	// TextMate Command-Return (jump to end of graf and insert new line)
+	"@\U000D" = (moveToEndOfParagraph:, insertNewline:);
+	// Jump to line before graf and insert new line
+	"@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
 
 	// Forward delete to end of paragraph
 	"@\Uf728" = deleteToEndOfParagraph:;
