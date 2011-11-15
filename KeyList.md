@@ -1,19 +1,3 @@
-<style>
-table { margin-bottom:20px; }
-col:nth-child(3) { width:450px; }
-col:nth-child(1),col:nth-child(2) { width: 80px !important;  }
-td:nth-child(1), td:nth-child(2) { font-weight:bold; padding:0 }
-</style>
-
-DefaultKeyBindings.dict file for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
-
-[lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
-[lriweb]: http://www.cs.helsinki.fi/u/lranta/
-[lrigists]: https://gist.github.com/Lri
-[brett terpstra]: http://brettterpstra.com
-
-*Grouped items begin with the groups shortcut, followed by the Keys specified. Items separated by commas are sequential, not concurrent.*
-
 | Group  | Subgroup |      Keys      | Function                                                                                                      |  
 | :----: | :------: | :------------: | :------------------------------------------------------------------------------------------------------------ |  
 |        |          |      '^U'      | uppercase word                                                                                                |  

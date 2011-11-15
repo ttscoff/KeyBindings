@@ -50,9 +50,9 @@
       "/" = (setMark:, moveToBeginningOfParagraph:, insertText:, "// ", swapWithMark:, moveRight:, moveRight:, moveRight:);
       // comment with "#"
       "\\" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", swapWithMark:, moveRight:, moveRight:);
-      // TODO HTML COMMENTING
+      // HTML Comment
       "!" = (setMark:, moveToBeginningOfParagraph:, insertText:, "<!-- ", moveToEndOfParagraph:, insertText:, " -->", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
-      // TODO CSS COMMENTING
+      // CSS Comment
       "*" = (setMark:, moveToBeginningOfParagraph:, insertText:, "/* ", moveToEndOfParagraph:, insertText:, " */", swapWithMark:, moveRight:, moveRight:, moveRight:);
   };
 
@@ -61,42 +61,46 @@
   // italicize selection (Markdown)
   "@~i" = (selectWord:, setMark:, swapWithMark:, deleteToMark:, insertText:, "*", yank:, insertText:, " ", moveLeft:, insertText:, "*", moveRight:, deleteBackward:);
 
-  // increase/decrease markdown header level
+  // increase markdown header level
   "@~=" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, delete:, swapWithMark:, moveRight:);
+  // decrease markdown header level
   "@~-" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
 
-  "^@w" = { // Markdown commands
-    // force carriage return and tab in text field
-    "\U000A" = (insertNewlineIgnoringFieldEditor:);
+  "^@w" = { // Other Markdown commands
+    // force carriage return in text field
+    "\U000D" = (insertNewlineIgnoringFieldEditor:);
+    // force tab in text field
     "\U0009" = (insertText:, "\t");
-    // Headlines
-    // #x, # - ######
-    // removes leading whitespace after inserting hashmarks
-    "h" = {
+
+    "h" = { // Markdown Headlines
+        // 1st level Headline
         "1" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:, moveToEndOfParagraph:);
+        // 2nd level Headline
         "2" = (setMark:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // 3rd level Headline
         "3" = (setMark:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // 4th level Headline
         "4" = (setMark:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // 5th level Headline
         "5" = (setMark:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // 6th level Headline
         "6" = (setMark:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
     };
-    // links
-    "l" = { // markdown link
-      // create a link for selected text, cursor between () "[selected text](|)"
-      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
-      // create a link for selected text, inserting clipboard as url "[|selected text](clipboard contents)"
-      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:); // link with clipboard
+
+    "l" = { // markdown linking
+      // create a link for selected text, cursor between () "[selected text]()"
+      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:);
+      // create a link for selected text, inserting clipboard as url "[cursorselected text](clipboard contents)"
+      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:);
     };
-    // image
     "i" = { // link as image
-      // same as lt, but with image syntax "![selected text](|)"
-      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:); //  image link for text
-      // same as lc, but with image syntax "![selected text](|)"
-      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:); // image with clipboard
+      // same as lt, but with image syntax "![selected text](cursor)"
+      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:);
+      // same as lc, but with image syntax "![selected text](cursor)"
+      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:);
     };
-    // references
-    ":" = {
-      // without selected text first, these make a mess
+
+    ":" = { // references
       // create a reference from selected text
       "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
       // create a reference from selected text, clipboard as url
@@ -105,24 +109,25 @@
     // insert reference link
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
 
-    // lists
+    // + bulleted list
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
+    // - bulleted list
     "-" = (setMark:, moveToBeginningOfParagraph:, insertText:, "- ", swapWithMark:, moveRight:, moveRight:);
+    // * bulleted list
     "*" = (setMark:, moveToBeginningOfParagraph:, insertText:, "* ", swapWithMark:, moveRight:, moveRight:);
     // convert current numbered list item to bullet, handles indentation
-    "8" = (setMark:, moveToEndOfParagraph:,
-                    insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveRight:, moveWordForward:, moveWordBackward:, moveWordBackwardAndModifySelection:, insertText:, "* ", moveToEndOfParagraph:,
-                    deleteBackward:, swapWithMark:, moveLeft:);
+    "8" = (setMark:, moveToEndOfParagraph:,insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveRight:, moveWordForward:, moveWordBackward:, moveWordBackwardAndModifySelection:, insertText:, "* ", moveToEndOfParagraph:,deleteBackward:, swapWithMark:, moveLeft:);
     // convert current bullet list item to numbered
-    "1" = (setMark:, moveToEndOfParagraph:,
-                    insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveWordBackward:, moveLeftAndModifySelection:, moveLeftAndModifySelection:, insertText:, "1. ", moveToEndOfParagraph:,
-                    deleteBackward:, swapWithMark:, moveRight:);
+    "1" = (setMark:, moveToEndOfParagraph:,insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveWordBackward:, moveLeftAndModifySelection:, moveLeftAndModifySelection:, insertText:, "1. ", moveToEndOfParagraph:,deleteBackward:, swapWithMark:, moveRight:);
   };
 
   "^@e" = { // HTML
-      "=" = (insertText:, "=\"\"", moveLeft:); // ="|"
-      "e" = (insertText:, "&;", moveLeft:); // entity &|;
-      "/" = (insertText:, "http://"); // http://
+      // ="cursor"
+      "=" = (insertText:, "=\"\"", moveLeft:);
+      // entity &cursor;
+      "e" = (insertText:, "&;", moveLeft:);
+      // http://
+      "/" = (insertText:, "http://");
       // Make previous word into paired HTML tag
       "t" = ( "setMark:", "moveWordBackward:", "deleteToMark:", "insertText:", "<", "yank:", "insertText:", ">", "setMark:", "insertText:", "</", "yank:", "insertText:", ">", "swapWithMark:");
       "a" = { // HTML Links
@@ -179,10 +184,13 @@
   // outdent line (one tab or char)
   "^@h" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
 
-  // same commands but with arrow keys
+  // move line up with arrow keys
   "^@\Uf700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
+  // move line down with arrow keys
   "^@\Uf701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
+  // move line left with arrow keys
   "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
+  // move line right with arrow keys
   "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // Control-shift-command-left arrow : Full outdent - Deletes all leading space (or first word) of line/paragraph
@@ -202,15 +210,6 @@
   // Insert blank line above paragraph (Command Shift Enter)
   "@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
 
-  // // Page Up
-  // "\Uf72c" = (pageUp:);
-  // // Page Down
-  // "\Uf72d" = (pageDown:);
-  // // Scroll up
-  // "~\Uf72c" = (scrollPageUp:);
-  // // Scroll Down
-  // "~\Uf72d" = (scrollPageDown:);
-
   // hyphenate next space and move to next word
   "~_" = (selectWord:,moveRight:,setMark:,moveWordRight:,moveWordLeft:,moveLeft:,selectWord:,insertText:,"-",moveWordRight:);
 
@@ -219,10 +218,8 @@
   // jump to bookmark
   "~2" = (swapWithMark:,centerSelectionInVisibleArea:);
 
-  // A little vim, just as an example
-
-  "$\U001B" = { // shift-escape before each command (using escape breaks other functionality)
-      "d" = {
+  "$\U001B" = { // Vim commands, experimental
+      "d" = { // delete commands
           // 'dd' delete line/paragraph
           "d" = (setMark:, selectParagraph:, delete:, delete:, swapWithMark:);
           // 'd$' delete from cursor to end of graf
@@ -232,28 +229,22 @@
           // 'd^' delete to beginning of paragraph
           "^" = (moveToBeginningOfParagraphAndModifySelection:, delete:);
       };
+      // paste after
       "p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, yank:);
+      // paste before
       "P" = (moveToBeginningOfParagraph:, moveLeft:, yank:);
+      // Yank
       "y" = (yank:);
-      "5" = {
+      "5" = { // commands times 5
           "d" = {
               // 'dd' delete line/paragraph
-              "d" = ( selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:);
+              "d" = ( selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:);
           };
-          "p" = (     moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:);
-          "P" = (     moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:);
+          // paste 5 times after
+          "p" = ( moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:);
+          // paste 5 times before
+          "P" = ( moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:);
+          // paste 5 times in a row
           "y" = (     yank:, yank:, yank:, yank:, yank:);
       };
   };
@@ -262,7 +253,4 @@
   "~r" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
   // Forward delete to end of paragraph
   "@\Uf728" = (deleteToEndOfParagraph:);
-
-  // TODO
-  //
 }

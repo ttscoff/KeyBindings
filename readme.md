@@ -5,15 +5,16 @@ DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) f
 [lrigists]: https://gist.github.com/Lri
 [brett terpstra]: http://brettterpstra.com
 
-*Grouped items begin with the groups shortcut, followed by the Keys specified. Items separated by commas are sequential, not concurrent.*
+*Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the Keys specified.*
 
 <p>DefaultKeyBindings.dict file for Mac OS X, created by <a href="http://brettterpstra.com">Brett Terpstra</a> and based heavily on work done by <a href="http://www.cs.helsinki.fi/u/lranta/keybindings/">Lri</a>. See Lri&#8217;s <a href="https://gist.github.com/Lri">gists</a> and <a href="http://www.cs.helsinki.fi/u/lranta/">website</a> for more coding madness.</p>
 
 <p><em>Grouped items begin with the groups shortcut, followed by the Keys specified. Items separated by commas are sequential, not concurrent.</em></p>
 
+
 <table>
-<caption id="allpurposekeycombos"> All purpose key combos </caption>
 <colgroup>
+<col style="text-align:center;"/>
 <col style="text-align:center;"/>
 <col style="text-align:center;"/>
 <col style="text-align:left;"/>
@@ -22,6 +23,7 @@ DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) f
 <thead>
 <tr>
 	<th style="text-align:center;">Group</th>
+	<th style="text-align:center;">Subgroup</th>
 	<th style="text-align:center;">Keys</th>
 	<th style="text-align:left;">Function</th>
 </tr>
@@ -30,437 +32,609 @@ DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) f
 <tbody>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-z</td>
-	<td style="text-align:left;">copy character before cursor</td>
-</tr>
-<tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-r</td>
-	<td style="text-align:left;">repeat character before cursor</td>
-</tr>
-<tr>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-t</td>
-	<td style="text-align:left;">transpose characters</td>
-</tr>
-<tr>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-+</td>
+	<td style="text-align:center;">&#8216;^U&#8217;</td>
 	<td style="text-align:left;">uppercase word</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt--</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^u&#8217;</td>
 	<td style="text-align:left;">lowercase word</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-.</td>
-	<td style="text-align:left;">capitalize word</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^T&#8217;</td>
+	<td style="text-align:left;">titlecase word</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌥U&#8217;</td>
+	<td style="text-align:left;">uppercase current paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌥u&#8217;</td>
+	<td style="text-align:left;">lowercase current paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌥t&#8217;</td>
+	<td style="text-align:left;">titlecase paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^w&#8217;</td>
 	<td style="text-align:left;">delete word before cursor</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥w&#8217;</td>
 	<td style="text-align:left;">select word</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-f</td>
-	<td style="text-align:left;">cut word (fold)</td>
-</tr>
-<tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-g</td>
-	<td style="text-align:left;">copy word (grab)</td>
-</tr>
-<tr>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-h</td>
-	<td style="text-align:left;">paste word (hit)</td>
-</tr>
-<tr>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-l</td>
+	<td style="text-align:center;">&#8216;⌥S&#8217;</td>
 	<td style="text-align:left;">select entire line/paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥s&#8217;</td>
 	<td style="text-align:left;">select from beginning of paragrah to last character</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-d</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥d&#8217;</td>
 	<td style="text-align:left;">delete line/paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-y</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥y&#8217;</td>
 	<td style="text-align:left;">copy paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-x</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥x&#8217;</td>
 	<td style="text-align:left;">cut paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-p</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥p&#8217;</td>
 	<td style="text-align:left;">paste paragraph below</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-Shift-P</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥P&#8217;</td>
 	<td style="text-align:left;">paste paragraph above</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Shift-A</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^A&#8217;</td>
 	<td style="text-align:left;">select to beginning of paragraph and copy</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Shift-E</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^E&#8217;</td>
 	<td style="text-align:left;">select to end of paragraph and copy</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-q</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥q&#8217;</td>
 	<td style="text-align:left;">cut to beginning of paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-k</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥k&#8217;</td>
 	<td style="text-align:left;">cut to end of paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-,</td>
-	<td style="text-align:left;">move paragraph up a line, inserting blank space after</td>
-</tr>
-<tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-␠</td>
-	<td style="text-align:left;">move paragraph to end of document</td>
-</tr>
-<tr>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-o</td>
+	<td style="text-align:center;">&#8216;⌥o&#8217;</td>
 	<td style="text-align:left;">blank line after current</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-Shift-O</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥O&#8217;</td>
 	<td style="text-align:left;">blank line before current</td>
 </tr>
 <tr>
+	<td style="text-align:center;">^⌘c</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Opt-/</td>
-	<td style="text-align:left;">comment with “//”</td>
+	<td style="text-align:center;">&#8216;/&#8217;</td>
+	<td style="text-align:left;">comment with &#8220;//&#8221;</td>
 </tr>
 <tr>
+	<td style="text-align:center;">^⌘c</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Opt-3</td>
-	<td style="text-align:left;">comment with “#”</td>
+	<td style="text-align:center;">&#8216;\&#8217;</td>
+	<td style="text-align:left;">comment with &#8220;#&#8221;</td>
 </tr>
-</tbody>
-</table>
-
-
-<table>
-<caption id="markdown-specificshortcutsx2318w"> Markdown-specific shortcuts (Ctrl-Cmd-W) </caption>
-<colgroup>
-<col style="text-align:center;"/>
-<col style="text-align:center;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
-<thead>
 <tr>
-	<th style="text-align:center;">Group</th>
-	<th style="text-align:center;">Keys</th>
-	<th style="text-align:left;">Function</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
+	<td style="text-align:center;">^⌘c</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Opt-b</td>
-	<td style="text-align:left;">bold selection</td>
+	<td style="text-align:center;">&#8216;!&#8217;</td>
+	<td style="text-align:left;">HTML Comment</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘c</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;*&#8217;</td>
+	<td style="text-align:left;">CSS Comment</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Opt-i</td>
-	<td style="text-align:left;">italicize selection</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⌥b&#8217;</td>
+	<td style="text-align:left;">bold selection (Markdown)</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">Return</td>
-	<td style="text-align:left;">force Return</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⌥i&#8217;</td>
+	<td style="text-align:left;">italicize selection (Markdown)</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">⇥</td>
-	<td style="text-align:left;">force Tab</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⌥=&#8217;</td>
+	<td style="text-align:left;">increase markdown header level</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">1–4</td>
-	<td style="text-align:left;"># Headlines</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⌥-&#8217;</td>
+	<td style="text-align:left;">decrease markdown header level</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">l,t</td>
-	<td style="text-align:left;">link text <code>"[selected text](|)"</code></td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;↩&#8217;</td>
+	<td style="text-align:left;">force carriage return in text field</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">l,c</td>
-	<td style="text-align:left;">clipboard link <code>"[|selected text](clipboard contents)"</code></td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⇥&#8217;</td>
+	<td style="text-align:left;">force tab in text field</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">i,t</td>
-	<td style="text-align:left;">image, selection as alt <code>"![selected text](|)"</code></td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">h</td>
+	<td style="text-align:center;">&#8216;1&#8217;</td>
+	<td style="text-align:left;">1st level Headline</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">i,c</td>
-	<td style="text-align:left;">clipboard image <code>"![|selected text](clipboard contents)"</code></td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">h</td>
+	<td style="text-align:center;">&#8216;2&#8217;</td>
+	<td style="text-align:left;">2nd level Headline</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">:,t</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">h</td>
+	<td style="text-align:center;">&#8216;3&#8217;</td>
+	<td style="text-align:left;">3rd level Headline</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">h</td>
+	<td style="text-align:center;">&#8216;4&#8217;</td>
+	<td style="text-align:left;">4th level Headline</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">h</td>
+	<td style="text-align:center;">&#8216;5&#8217;</td>
+	<td style="text-align:left;">5th level Headline</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">h</td>
+	<td style="text-align:center;">&#8216;6&#8217;</td>
+	<td style="text-align:left;">6th level Headline</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">l</td>
+	<td style="text-align:center;">&#8216;t&#8217;</td>
+	<td style="text-align:left;">create a link for selected text, cursor between () &#8220;<a href="">selected text</a>&#8221;</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">l</td>
+	<td style="text-align:center;">&#8216;c&#8217;</td>
+	<td style="text-align:left;">create a link for selected text, inserting clipboard as url &#8220;[cursorselected text](clipboard contents)&#8221;</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">i</td>
+	<td style="text-align:center;">&#8216;t&#8217;</td>
+	<td style="text-align:left;">same as lt, but with image syntax &#8220;<img src="cursor" alt="selected text" />&#8221;</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">i</td>
+	<td style="text-align:center;">&#8216;c&#8217;</td>
+	<td style="text-align:left;">same as lc, but with image syntax &#8220;<img src="cursor" alt="selected text" />&#8221;</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">:</td>
+	<td style="text-align:center;">&#8216;t&#8217;</td>
 	<td style="text-align:left;">create a reference from selected text</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">:,c</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;">:</td>
+	<td style="text-align:center;">&#8216;c&#8217;</td>
 	<td style="text-align:left;">create a reference from selected text, clipboard as url</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">[</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;[&#8217;</td>
 	<td style="text-align:left;">insert reference link</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">+|-|*</td>
-	<td style="text-align:left;">lists</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;+&#8217;</td>
+	<td style="text-align:left;">+ bulleted list</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">=,Opt-Shift-L</td>
-	<td style="text-align:left;">new list item after current</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;-&#8217;</td>
+	<td style="text-align:left;">- bulleted list</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">e</td>
-	<td style="text-align:left;">entity</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;*&#8217;</td>
+	<td style="text-align:left;">* bulleted list</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-w</td>
-	<td style="text-align:center;">=,/</td>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;8&#8217;</td>
+	<td style="text-align:left;">convert current numbered list item to bullet, handles indentation</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;1&#8217;</td>
+	<td style="text-align:left;">convert current bullet list item to numbered</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;=&#8217;</td>
+	<td style="text-align:left;">=&#8220;cursor&#8221;</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;e&#8217;</td>
+	<td style="text-align:left;">entity &cursor;</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;/&#8217;</td>
 	<td style="text-align:left;">http://</td>
 </tr>
-</tbody>
-</table>
-
-
-<table>
-<caption id="surroundx2318s"> Surround (Ctrl-Cmd-s) </caption>
-<colgroup>
-<col style="text-align:center;"/>
-<col style="text-align:center;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
-<thead>
 <tr>
-	<th style="text-align:center;">Group</th>
-	<th style="text-align:center;">Keys</th>
-	<th style="text-align:left;">Function</th>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;t&#8217;</td>
+	<td style="text-align:left;">Make previous word into paired HTML tag</td>
 </tr>
-</thead>
-
-<tbody>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">(</td>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;">a</td>
+	<td style="text-align:center;">&#8216;t&#8217;</td>
+	<td style="text-align:left;">Insert HTML link for selected text, leave cursor in the href with &#8220;http://&#8221; selected</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;">a</td>
+	<td style="text-align:center;">&#8216;c&#8217;</td>
+	<td style="text-align:left;">Insert HTML link with clipboard as href</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;">i</td>
+	<td style="text-align:center;">&#8216;t&#8217;</td>
+	<td style="text-align:left;">Insert image tag, any selected text is alt text, leave cursor in src attribute</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘e</td>
+	<td style="text-align:center;">i</td>
+	<td style="text-align:center;">&#8216;c&#8217;</td>
+	<td style="text-align:left;">Insert image tag, clipboard as src, any selected text as alt, leave cursor at beginning of alt attribute</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥⌘↩&#8217;</td>
+	<td style="text-align:left;">Command Option Enter to continue a list item with indentation and include the same delimiter</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⇧⇥&#8217;</td>
+	<td style="text-align:left;">Shift Tab remove one tab (or character) from start of line (outdent)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;(&#8217;</td>
 	<td style="text-align:left;">wrap () with spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">)</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;)&#8217;</td>
 	<td style="text-align:left;">wrap () no spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">[</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;[&#8217;</td>
 	<td style="text-align:left;">wrap [] with spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">]</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;]&#8217;</td>
 	<td style="text-align:left;">wrap [] no spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">{</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;{&#8217;</td>
 	<td style="text-align:left;">wrap {} with spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">}</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;}&#8217;</td>
 	<td style="text-align:left;">wrap {} no spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">&lt;</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;&lt;&#8217;</td>
 	<td style="text-align:left;">wrap &lt;&gt; with spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">&gt;</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;&gt;&#8217;</td>
 	<td style="text-align:left;">wrap &lt;&gt; no spaces</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">’</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8217;&#8217;&#8217;</td>
 	<td style="text-align:left;">wrap single quotes</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">`</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;`&#8217;</td>
 	<td style="text-align:left;">wrap backticks</td>
 </tr>
 <tr>
-	<td style="text-align:center;">Ctrl-Cmd-s</td>
-	<td style="text-align:center;">"</td>
+	<td style="text-align:center;">^⌘s</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;\&#8217;</td>
 	<td style="text-align:left;">wrap double quote</td>
 </tr>
-</tbody>
-</table>
-
-
-<table>
-<caption id="listparagraphmotion"> List/Paragraph motion </caption>
-<colgroup>
-<col style="text-align:center;"/>
-<col style="text-align:center;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
-<thead>
-<tr>
-	<th style="text-align:center;">Group</th>
-	<th style="text-align:center;">Keys</th>
-	<th style="text-align:left;">Function</th>
-</tr>
-</thead>
-
-<tbody>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Cmd-k</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘k&#8217;</td>
 	<td style="text-align:left;">move line up</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Cmd-j</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘j&#8217;</td>
 	<td style="text-align:left;">move line down</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Cmd-l</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘l&#8217;</td>
 	<td style="text-align:left;">indent line</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Cmd-h</td>
-	<td style="text-align:left;">outdent line (all the way)</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘h&#8217;</td>
+	<td style="text-align:left;">outdent line (one tab or char)</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Opt-k</td>
-	<td style="text-align:left;">copy line and paste above</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘↑&#8217;</td>
+	<td style="text-align:left;">move line up with arrow keys</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Ctrl-Opt-j</td>
-	<td style="text-align:left;">copy line and paste below</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘↓&#8217;</td>
+	<td style="text-align:left;">move line down with arrow keys</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Opt-Up</td>
-	<td style="text-align:left;">modify selection up</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘→&#8217;</td>
+	<td style="text-align:left;">move line left with arrow keys</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Opt-Down</td>
-	<td style="text-align:left;">modify selection down</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌘←&#8217;</td>
+	<td style="text-align:left;">move line right with arrow keys</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Cmd-Del</td>
-	<td style="text-align:left;">Forward delete to end of paragraph</td>
-</tr>
-</tbody>
-</table>
-
-
-<table>
-<caption id="documentnavigation"> Document navigation </caption>
-<colgroup>
-<col style="text-align:center;"/>
-<col style="text-align:center;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
-<thead>
-<tr>
-	<th style="text-align:center;">Group</th>
-	<th style="text-align:center;">Keys</th>
-	<th style="text-align:left;">Function</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">PgUp</td>
-	<td style="text-align:left;">Page Up</td>
+	<td style="text-align:center;">&#8216;^⇧⌘←&#8217;</td>
+	<td style="text-align:left;">Control-shift-command-left arrow : Full outdent - Deletes all leading space (or first word) of line/paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">PgDown</td>
-	<td style="text-align:left;">Page Down</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⌥⇧↑&#8217;</td>
+	<td style="text-align:left;">modify selection up by paragraph (Command Option Shift Up)</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-PgUp</td>
-	<td style="text-align:left;">Scroll up</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⌥⇧↓&#8217;</td>
+	<td style="text-align:left;">modify selection down by paragraph (Command Option Shift Down)</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-PgDown</td>
-	<td style="text-align:left;">Scroll Down</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌥⇧←&#8217;</td>
+	<td style="text-align:left;">modify selection left by word</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-1</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;^⌥⇧→&#8217;</td>
+	<td style="text-align:left;">modify selection right by word</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘↩&#8217;</td>
+	<td style="text-align:left;">TextMate Command-Return (Command Enter)</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘⇧↩&#8217;</td>
+	<td style="text-align:left;">Insert blank line above paragraph (Command Shift Enter)</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥_&#8217;</td>
+	<td style="text-align:left;">hyphenate next space and move to next word</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥1&#8217;</td>
 	<td style="text-align:left;">bookmark</td>
 </tr>
 <tr>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">Opt-2</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥2&#8217;</td>
 	<td style="text-align:left;">jump to bookmark</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;">d</td>
+	<td style="text-align:center;">&#8216;d&#8217;</td>
+	<td style="text-align:left;">&#8216;dd&#8217; delete line/paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;">d</td>
+	<td style="text-align:center;">&#8216;⇧&#8217;</td>
+	<td style="text-align:left;">&#8216;d$&#8217; delete from cursor to end of graf</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;">d</td>
+	<td style="text-align:center;">&#8216;0&#8217;</td>
+	<td style="text-align:left;">&#8216;d0&#8217; delete to beginning of paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;">d</td>
+	<td style="text-align:center;">&#8216;^&#8217;</td>
+	<td style="text-align:left;">&#8216;d^&#8217; delete to beginning of paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;p&#8217;</td>
+	<td style="text-align:left;">paste after</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;P&#8217;</td>
+	<td style="text-align:left;">paste before</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;y&#8217;</td>
+	<td style="text-align:left;">Yank</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;">5</td>
+	<td style="text-align:center;">&#8216;d&#8217;</td>
+	<td style="text-align:left;">&#8216;dd&#8217; delete line/paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;p&#8217;</td>
+	<td style="text-align:left;">paste 5 times after</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;P&#8217;</td>
+	<td style="text-align:left;">paste 5 times before</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⇧⎋</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;y&#8217;</td>
+	<td style="text-align:left;">paste 5 times in a row</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌥r&#8217;</td>
+	<td style="text-align:left;">repeat character before cursor</td>
+</tr>
+<tr>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">&#8216;⌘␡&#8217;</td>
+	<td style="text-align:left;">Forward delete to end of paragraph</td>
 </tr>
 </tbody>
 </table>
