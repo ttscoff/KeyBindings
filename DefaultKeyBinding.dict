@@ -53,9 +53,9 @@
       "/" = (setMark:, moveToBeginningOfParagraph:, insertText:, "// ", swapWithMark:, moveRight:, moveRight:, moveRight:);
       // comment with "#"
       "\\" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", swapWithMark:, moveRight:, moveRight:);
-      // TODO HTML COMMENTING
+      // Html Commenting
       "!" = (setMark:, moveToBeginningOfParagraph:, insertText:, "<!-- ", moveToEndOfParagraph:, insertText:, " -->", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
-      // TODO CSS COMMENTING
+      // Css Commenting
       "*" = (setMark:, moveToBeginningOfParagraph:, insertText:, "/* ", moveToEndOfParagraph:, insertText:, " */", swapWithMark:, moveRight:, moveRight:, moveRight:);
   };
 
@@ -84,30 +84,33 @@
         "6" = (setMark:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
     };
     // links
+    // without selected text first, these can produce a mess using multiple clipboards
+    // make a text selection before you run them
     "l" = { // markdown link
       // create a link for selected text, cursor between () "[selected text](|)"
-      // TODO: after using this, if you insert a link with nothing selected, it uses your last kill buffer. Need a way to clear that buffer if there's no selection.
-      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
+      "t" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
       // create a link for selected text, inserting clipboard as url "[|selected text](clipboard contents)"
-      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:); // link with clipboard
+      "c" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:); // link with clipboard
     };
     // image
     "i" = { // link as image
       // same as lt, but with image syntax "![selected text](|)"
+      // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
       "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:); //  image link for text
-      // same as lc, but with image syntax "![selected text](|)"
+      // same as lc, but with image syntax "![selected text](clipboard)"
       "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:); // image with clipboard
     };
     // references
     ":" = {
-      // without selected text first, these make a mess
       // create a reference from selected text
       "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
       // create a reference from selected text, clipboard as url
       "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", pasteAsPlainText:, moveRight:, deleteBackward:, swapWithMark:);
     };
-    // insert reference link
+    // insert reference link [selection][|]
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
+    // insert reference [selection]: |
+    "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:, deleteForward:);
 
     // lists
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
