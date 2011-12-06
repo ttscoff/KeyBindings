@@ -7,10 +7,6 @@ DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) f
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the Keys specified.*
 
-<p>DefaultKeyBindings.dict file for Mac OS X, created by <a href="http://brettterpstra.com">Brett Terpstra</a> and based heavily on work done by <a href="http://www.cs.helsinki.fi/u/lranta/keybindings/">Lri</a>. See Lri&#8217;s <a href="https://gist.github.com/Lri">gists</a> and <a href="http://www.cs.helsinki.fi/u/lranta/">website</a> for more coding madness.</p>
-
-<p><em>Grouped items begin with the groups shortcut, followed by the Keys specified. Items separated by commas are sequential, not concurrent.</em></p>
-
 
 <table>
 <colgroup>
@@ -39,7 +35,7 @@ DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) f
 <tr>
 	<td style="text-align:center;"></td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">&#8216;^u&#8217;</td>
+	<td style="text-align:center;">&#8216;^~u&#8217;</td>
 	<td style="text-align:left;">lowercase word</td>
 </tr>
 <tr>
