@@ -99,11 +99,11 @@ input.split("\n").each {|line|
     next
   elsif line =~ /^\s*"([^"]+)"\s*=\s*\(/
     command = translate_command($1)
+    note = "(#{note})" if note != ''
     if level == 0
-      toplevel.push("|#{command}|#{desc}|\n")
+      toplevel.push("|#{command}|#{desc} #{note}|\n")
     else
       command = prefix + "," + command if prefix
-      note = "(#{note})" if note != ''
       output += "|#{group_command} |#{subgroup_command} |#{command} |#{desc} #{note}|\n"
     end
     note = ''

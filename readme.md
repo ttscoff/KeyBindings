@@ -31,7 +31,7 @@ This documentation is generated automatically from the comments and commands in 
 <tbody>
 <tr>
 	<td style="text-align:center;">^y</td>
-	<td style="text-align:left;">replace yank: command with yankAndSelect for use with the kill ring</td>
+	<td style="text-align:left;">replace yank: command with yankAndSelect for use with the kill ring ( defaults write -g NSTextKillRingSize -string 6)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">^⇧u</td>
@@ -131,7 +131,7 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 <tr>
 	<td style="text-align:center;">^⌘↑</td>
-	<td style="text-align:left;">move line up</td>
+	<td style="text-align:left;">move line up ( same commands but with arrow keys)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">^⌘↓</td>
@@ -147,7 +147,7 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 <tr>
 	<td style="text-align:center;">^⇧⌘←</td>
-	<td style="text-align:left;">Full outdent - Deletes all leading space (or first word) of line/paragraph</td>
+	<td style="text-align:left;">Full outdent - Deletes all leading space (or first word) of line/paragraph ( Control-shift-command-left arrow)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⌥⇧↑</td>
@@ -175,7 +175,7 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 <tr>
 	<td style="text-align:center;">⌥_</td>
-	<td style="text-align:left;">hyphenate next space and move to next word</td>
+	<td style="text-align:left;">hyphenate next space and move to next word ( this will kill non alphanumeric symbols and punctuation, use only on <em>words</em>)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌥1</td>
@@ -187,11 +187,11 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 <tr>
 	<td style="text-align:center;">⌥⌘↩</td>
-	<td style="text-align:left;">Continue a list item with indentation and include the same delimiter</td>
+	<td style="text-align:left;">Continue a list item with indentation and include the same delimiter ( Command Option Enter)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⇧⇥</td>
-	<td style="text-align:left;">remove one tab (or character) from start of line (outdent)</td>
+	<td style="text-align:left;">remove one tab (or character) from start of line (outdent) ( Shift Tab)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⌥b</td>
