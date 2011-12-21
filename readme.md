@@ -9,16 +9,7 @@ This documentation is generated automatically from the comments and commands in 
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 
-<style>
-table { margin-bottom:20px; border:none; width: 100%; }
 
-caption { text-align:left; padding:5px; font-weight:bold; border: dotted 1px #777;background:#eee; margin-bottom:10px }
-td,th { font-weight:bold; padding:3px; border: solid 1px #ccc; padding:4px }
-td:nth-child(1),td:nth-child(2),td:nth-child(3) { width:40px}
-td:first-child {font-weight:bold !important}
-td:last-child { font-weight:normal;width:auto }
-
-</style>
 
 <table>
 <caption id="generalcommands"> General Commands </caption>
