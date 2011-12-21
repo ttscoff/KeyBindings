@@ -1,6 +1,6 @@
-{
+{ // General
+  // > defaults write -g NSTextKillRingSize -string 6
   // replace yank: command with yankAndSelect for use with the kill ring
-  // defaults write -g NSTextKillRingSize -string 6
   "^y" = (yankAndSelect:);
   // uppercase word
   "^U" = (uppercaseWord:, moveWordForward:, moveWordBackward:);
@@ -48,7 +48,61 @@
   // blank line before current
   "~O" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
 
-  "^@c" = { // commenting
+
+  // move line up
+  "^@k" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
+  // move line down
+  "^@j" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
+  // indent line
+  "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
+  // outdent line (one tab or char)
+  "^@h" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
+
+  // > same commands but with arrow keys
+  // move line up
+  "^@\Uf700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
+  // move line down
+  "^@\Uf701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
+  // indent line
+  "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
+  // outdent line (one tab or char)
+  "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
+
+  // > Control-shift-command-left arrow
+  // Full outdent - Deletes all leading space (or first word) of line/paragraph
+  "^$@\UF702" = (setMark:, moveToBeginningOfParagraph:, selectWord:, delete:, swapWithMark:, moveLeft:);
+
+  // modify selection up by paragraph (Command Option Shift Up)
+  "@~$\Uf700" = (selectParagraph:, moveParagraphBackwardAndModifySelection:);
+  // modify selection down by paragraph (Command Option Shift Down)
+  "@~$\Uf701" = (selectParagraph:, moveParagraphForwardAndModifySelection:);
+  // modify selection left by word
+  "^~$\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
+  // modify selection right by word
+  "^~$\UF703" = (selectWord:, moveWordRightAndModifySelection:);
+
+  // TextMate Command-Return (Command Enter)
+  "@\U000D" = (moveToEndOfParagraph:, insertNewline:);
+  // Insert blank line above paragraph (Command Shift Enter)
+  "@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
+
+  // > this will kill non alphanumeric symbols and punctuation, use only on *words*
+  // hyphenate next space and move to next word
+  "~_" = (selectWord:,moveRight:,setMark:,moveWordRight:,moveWordLeft:,moveLeft:,selectWord:,insertText:,"-",moveWordRight:);
+
+  // bookmark
+  "~1" = (setMark:);
+  // jump to bookmark
+  "~2" = (swapWithMark:,centerSelectionInVisibleArea:);
+
+  // > Command Option Enter
+  // Continue a list item with indentation and include the same delimiter
+  "~@\U000D" = ( breakUndoCoalescing, moveToEndOfParagraph:, insertText:, "x", moveToBeginningOfParagraph:, selectWord:, moveRightAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:, moveLeftAndModifySelection:, setMark:, deleteToMark:, yank:, moveToEndOfParagraph:, deleteBackward:, insertNewlineIgnoringFieldEditor:, deleteToBeginningOfParagraph:, yank:, insertText:, " ", selectWord:, insertText:, " ");
+  // > Shift Tab
+  // remove one tab (or character) from start of line (outdent)
+  "$\U0009" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
+
+  "^@c" = { // Commenting commands
       // comment with "//"
       "/" = (setMark:, moveToBeginningOfParagraph:, insertText:, "// ", swapWithMark:, moveRight:, moveRight:, moveRight:);
       // comment with "#"
@@ -64,68 +118,78 @@
   // italicize selection (Markdown)
   "@~i" = (selectWord:, setMark:, swapWithMark:, deleteToMark:, insertText:, "*", yank:, insertText:, " ", moveLeft:, insertText:, "*", moveRight:, deleteBackward:);
 
-  // increase/decrease markdown header level
+  // increase markdown header level
   "@~=" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, delete:, swapWithMark:, moveRight:);
+  // decrease markdown header level
   "@~-" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
 
-  "^@w" = { // Markdown commands
-    // force carriage return and tab in text field
+  "^@w" = { // Multi-stroke Markdown commands
+    // force carriage return in text field
     "\U000A" = (insertNewlineIgnoringFieldEditor:);
+    // force tab in text field
     "\U0009" = (insertText:, "\t");
-    // Headlines
-    // #x, # - ######
-    // removes leading whitespace after inserting hashmarks
-    "h" = {
-        "1" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:, moveToEndOfParagraph:);
-        "2" = (setMark:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
-        "3" = (setMark:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
-        "4" = (setMark:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
-        "5" = (setMark:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
-        "6" = (setMark:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
-    };
-    // links
-    // without selected text first, these can produce a mess using multiple clipboards
-    // make a text selection before you run them
-    "l" = { // markdown link
-      // create a link for selected text, cursor between () "[selected text](|)"
-      "t" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
-      // create a link for selected text, inserting clipboard as url "[|selected text](clipboard contents)"
-      "c" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:); // link with clipboard
-    };
-    // image
-    "i" = { // link as image
-      // same as lt, but with image syntax "![selected text](|)"
-      // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
-      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:); //  image link for text
-      // same as lc, but with image syntax "![selected text](clipboard)"
-      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:); // image with clipboard
-    };
-    // references
-    ":" = {
-      // create a reference from selected text
-      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
-      // create a reference from selected text, clipboard as url
-      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", pasteAsPlainText:, moveRight:, deleteBackward:, swapWithMark:);
-    };
-    // insert reference link [selection][|]
+    // insert reference link `[selection][[cursor]]`
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
-    // insert reference [selection]: |
+    // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:, deleteForward:);
 
-    // lists
+    // Unordered list item with +
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
+    // Unordered list item with -
     "-" = (setMark:, moveToBeginningOfParagraph:, insertText:, "- ", swapWithMark:, moveRight:, moveRight:);
+    // Unordered list item with *
     "*" = (setMark:, moveToBeginningOfParagraph:, insertText:, "* ", swapWithMark:, moveRight:, moveRight:);
     // convert current numbered list item to bullet, handles indentation
     "8" = (breakUndoCoalescing, setMark:, moveToEndOfParagraph:, insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveRight:, moveWordForward:, moveWordBackward:, moveWordBackwardAndModifySelection:, insertText:, "* ", moveToEndOfParagraph:, deleteBackward:, swapWithMark:, moveLeft:);
     // convert current bullet list item to numbered
     "1" = (breakUndoCoalescing, setMark:, moveToEndOfParagraph:, insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveWordBackward:, moveLeftAndModifySelection:, moveLeftAndModifySelection:, insertText:, "1. ", moveToEndOfParagraph:, deleteBackward:, swapWithMark:, moveRight:);
+
+    "h" = { // Headlines (removes leading whitespace after inserting hashmarks)
+        // #
+        "1" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:, moveToEndOfParagraph:);
+        // ##
+        "2" = (setMark:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // ###
+        "3" = (setMark:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // ####
+        "4" = (setMark:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // #####
+        "5" = (setMark:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        // ######
+        "6" = (setMark:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+    };
+    // > links
+    // > without selected text first, these can produce a mess using multiple clipboards
+    // > make a text selection before you run them
+    "l" = { // Markdown link
+      // create a link for selected text, cursor between () `[selected text]([cursor])`
+      "t" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
+      // create a link for selected text, inserting clipboard as url `[[cursor]selected text](clipboard contents)`
+      "c" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:); // link with clipboard
+    };
+    "i" = { // Link as image
+      // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
+      // same as lt, but with image syntax `![selected text]([cursor])`
+      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, insertText:, " ", moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:); //  image link for text
+      // same as lc, but with image syntax `![selected text](clipboard)`
+      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "![", yank:, setMark:, insertText:, " ", moveLeft:, insertText:, "](", pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, swapWithMark:);
+    };
+
+    ":" = { // Reference links
+      // create a reference from selected text
+      "t" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
+      // create a reference from selected text, clipboard as url
+      "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", pasteAsPlainText:, moveRight:, deleteBackward:, swapWithMark:);
+    };
   };
 
-  "^@e" = { // HTML
-      "=" = (insertText:, "=\"\"", moveLeft:); // ="|"
-      "e" = (insertText:, "&;", moveLeft:); // entity &|;
-      "/" = (insertText:, "http://"); // http://
+  "^@e" = { // HTML commands
+      // ="[cursor]"
+      "=" = (insertText:, "=\"\"", moveLeft:);
+      // entity &[cursor];
+      "e" = (insertText:, "&;", moveLeft:);
+      // http://
+      "/" = (insertText:, "http://");
       // Make previous word into paired HTML tag
       "t" = ( "setMark:", "moveWordBackward:", "deleteToMark:", "insertText:", "<", "yank:", "insertText:", ">", "setMark:", "insertText:", "</", "yank:", "insertText:", ">", "swapWithMark:");
       "a" = { // HTML Links
@@ -142,13 +206,7 @@
       };
   };
 
-  // Command Option Enter to continue a list item with indentation and include the same delimiter
-  "~@\U000D" = ( breakUndoCoalescing, moveToEndOfParagraph:, insertText:, "x", moveToBeginningOfParagraph:, selectWord:, moveRightAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:, moveLeftAndModifySelection:, setMark:, deleteToMark:, yank:, moveToEndOfParagraph:, deleteBackward:, insertNewlineIgnoringFieldEditor:, deleteToBeginningOfParagraph:, yank:, insertText:, " ", selectWord:, insertText:, " ");
-  // Shift Tab remove one tab (or character) from start of line (outdent)
-  "$\U0009" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
-
-
-  "^@s" = {   // surround commands
+  "^@s" = {   // Surround commands
     // wrap () with spaces
     "(" = (delete:, insertText:, "( ", yank:, insertText:, " ", moveLeft:, insertText:, " )", deleteForward:);
     // wrap () no spaces
@@ -173,60 +231,15 @@
     "\"" = (delete:, insertText:, "\" ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "\"", deleteForward:);
   };
 
-  // move line up
-  "^@k" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
-  // move line down
-  "^@j" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
-  // indent line
-  "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
-  // outdent line (one tab or char)
-  "^@h" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
+  "$\U001B" = { // Vim Example commands (A little vim, just as an example)
+      // paste after
+      "p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, yank:);
+      // paste before
+      "P" = (moveToBeginningOfParagraph:, moveLeft:, yank:);
+      // yank
+      "y" = (yank:);
 
-  // same commands but with arrow keys
-  "^@\Uf700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
-  "^@\Uf701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
-  "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
-  "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
-
-  // Control-shift-command-left arrow : Full outdent - Deletes all leading space (or first word) of line/paragraph
-  "^$@\UF702" = (setMark:, moveToBeginningOfParagraph:, selectWord:, delete:, swapWithMark:, moveLeft:);
-
-  // modify selection up by paragraph (Command Option Shift Up)
-  "@~$\Uf700" = (selectParagraph:, moveParagraphBackwardAndModifySelection:);
-  // modify selection down by paragraph (Command Option Shift Down)
-  "@~$\Uf701" = (selectParagraph:, moveParagraphForwardAndModifySelection:);
-  // modify selection left by word
-  "^~$\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
-  // modify selection right by word
-  "^~$\UF703" = (selectWord:, moveWordRightAndModifySelection:);
-
-  // TextMate Command-Return (Command Enter)
-  "@\U000D" = (moveToEndOfParagraph:, insertNewline:);
-  // Insert blank line above paragraph (Command Shift Enter)
-  "@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
-
-  // // Page Up
-  // "\Uf72c" = (pageUp:);
-  // // Page Down
-  // "\Uf72d" = (pageDown:);
-  // // Scroll up
-  // "~\Uf72c" = (scrollPageUp:);
-  // // Scroll Down
-  // "~\Uf72d" = (scrollPageDown:);
-
-  // hyphenate next space and move to next word
-  // this will kill non alphanumeric symbols and punctuation, use only on *words*
-  "~_" = (selectWord:,moveRight:,setMark:,moveWordRight:,moveWordLeft:,moveLeft:,selectWord:,insertText:,"-",moveWordRight:);
-
-  // bookmark
-  "~1" = (setMark:);
-  // jump to bookmark
-  "~2" = (swapWithMark:,centerSelectionInVisibleArea:);
-
-  // A little vim, just as an example
-
-  "$\U001B" = { // shift-escape before each command (using escape breaks other functionality)
-      "d" = {
+      "d" = { // Delete
           // 'dd' delete line/paragraph
           "d" = (setMark:, selectParagraph:, delete:, delete:, swapWithMark:);
           // 'd$' delete from cursor to end of graf
@@ -236,29 +249,18 @@
           // 'd^' delete to beginning of paragraph
           "^" = (moveToBeginningOfParagraphAndModifySelection:, delete:);
       };
-      "p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, yank:);
-      "P" = (moveToBeginningOfParagraph:, moveLeft:, yank:);
-      "y" = (yank:);
-      "5" = {
-          "d" = {
+
+      "5" = { // Repeat 5 times
+          "d" = { // Delete
               // 'dd' delete line/paragraph
-              "d" = ( selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:,
-                      selectParagraph:, delete:, delete:, moveRight:);
+              "d" = ( selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:);
           };
-          "p" = (     moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:,
-                      moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:);
-          "P" = (     moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:,
-                      moveToBeginningOfParagraph:, moveLeft:, yank:);
-          "y" = (     yank:, yank:, yank:, yank:, yank:);
+          // paste after
+          "p" = ( moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:);
+          // paste before
+          "P" = ( moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:);
+          // yank
+          "y" = ( yank:, yank:, yank:, yank:, yank:);
       };
   };
 
@@ -267,6 +269,4 @@
   // Forward delete to end of paragraph
   "@\Uf728" = (deleteToEndOfParagraph:);
 
-  // TODO
-  //
 }
