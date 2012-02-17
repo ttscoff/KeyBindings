@@ -107,10 +107,10 @@
       "/" = (setMark:, moveToBeginningOfParagraph:, insertText:, "// ", swapWithMark:, moveRight:, moveRight:, moveRight:);
       // comment with "#"
       "\\" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", swapWithMark:, moveRight:, moveRight:);
-      // Html Commenting
-      "!" = (setMark:, moveToBeginningOfParagraph:, insertText:, "<!-- ", moveToEndOfParagraph:, insertText:, " -->", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
+      // HTML commenting
+      "!" = (setMark:, swapWithMark:, delete:, insertText:, "<!-- ", yank:, insertText:, " -->", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
       // Css Commenting
-      "*" = (setMark:, moveToBeginningOfParagraph:, insertText:, "/* ", moveToEndOfParagraph:, insertText:, " */", swapWithMark:, moveRight:, moveRight:, moveRight:);
+      "*" = (setMark:, swapWithMark:, delete:, insertText:, "/* ", yank:, insertText:, " */", swapWithMark:, moveRight:, moveRight:, moveRight:);
   };
 
   // bold selection (Markdown)
@@ -133,7 +133,7 @@
     // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:, deleteForward:);
 
-    // Unordered list item with +
+    // Unordered list item with
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
     // Unordered list item with -
     "-" = (setMark:, moveToBeginningOfParagraph:, insertText:, "- ", swapWithMark:, moveRight:, moveRight:);
@@ -231,38 +231,38 @@
     "\"" = (delete:, insertText:, "\" ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "\"", deleteForward:);
   };
 
-  "$\U001B" = { // Vim Example commands (A little vim, just as an example)
-      // paste after
-      "p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, yank:);
-      // paste before
-      "P" = (moveToBeginningOfParagraph:, moveLeft:, yank:);
-      // yank
-      "y" = (yank:);
-
-      "d" = { // Delete
-          // 'dd' delete line/paragraph
-          "d" = (setMark:, selectParagraph:, delete:, delete:, swapWithMark:);
-          // 'd$' delete from cursor to end of graf
-          "$" = (moveToEndOfParagraphAndModifySelection:, delete:);
-          // 'd0' delete to beginning of paragraph
-          "0" = (moveToBeginningOfParagraphAndModifySelection:, delete:);
-          // 'd^' delete to beginning of paragraph
-          "^" = (moveToBeginningOfParagraphAndModifySelection:, delete:);
-      };
-
-      "5" = { // Repeat 5 times
-          "d" = { // Delete
-              // 'dd' delete line/paragraph
-              "d" = ( selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:);
-          };
-          // paste after
-          "p" = ( moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:);
-          // paste before
-          "P" = ( moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:);
-          // yank
-          "y" = ( yank:, yank:, yank:, yank:, yank:);
-      };
-  };
+  // "$\U002B" = { // Vim Example commands (A little vim, just as an example)
+  //     // paste after
+  //     "p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, yank:);
+  //     // paste before
+  //     "P" = (moveToBeginningOfParagraph:, moveLeft:, yank:);
+  //     // yank
+  //     "y" = (yank:);
+  //
+  //     "d" = { // Delete
+  //         // 'dd' delete line/paragraph
+  //         "d" = (setMark:, selectParagraph:, delete:, delete:, swapWithMark:);
+  //         // 'd$' delete from cursor to end of graf
+  //         "$" = (moveToEndOfParagraphAndModifySelection:, delete:);
+  //         // 'd0' delete to beginning of paragraph
+  //         "0" = (moveToBeginningOfParagraphAndModifySelection:, delete:);
+  //         // 'd^' delete to beginning of paragraph
+  //         "^" = (moveToBeginningOfParagraphAndModifySelection:, delete:);
+  //     };
+  //
+  //     "5" = { // Repeat 5 times
+  //         "d" = { // Delete
+  //             // 'dd' delete line/paragraph
+  //             "d" = ( selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:, selectParagraph:, delete:, delete:, moveRight:);
+  //         };
+  //         // paste after
+  //         "p" = ( moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:, moveToEndOfParagraph:, moveRight:, insertNewline:, moveLeft:, yank:);
+  //         // paste before
+  //         "P" = ( moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:, moveToBeginningOfParagraph:, moveLeft:, yank:);
+  //         // yank
+  //         "y" = ( yank:, yank:, yank:, yank:, yank:);
+  //     };
+  // };
 
   // repeat character before cursor
   "~r" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
