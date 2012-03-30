@@ -607,9 +607,3 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 </tbody>
 </table>
-
-|head 1|head2|
-| ----- | ----- |
-| data 1| data 2|
-| data 1| data 2|
-{#whoa}
