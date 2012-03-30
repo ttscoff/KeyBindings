@@ -7,6 +7,8 @@ infile = File.new('DefaultKeyBinding.dict','r')
 input = infile.read
 infile.close
 
+date = Time.now.strftime('%m/%d/%Y')
+
 output = ''
 style =<<STYLE
 <style>
@@ -23,7 +25,7 @@ td:last-child { font-weight:normal;width:auto }
 STYLE
 
 intro =<<INTRO
-DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
+DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness. Documentation last updated #{date}.
 
 [lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
 [lriweb]: http://www.cs.helsinki.fi/u/lranta/

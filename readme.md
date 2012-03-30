@@ -1,4 +1,4 @@
-DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
+DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness. Documentation last updated 03/30/2012.
 
 [lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
 [lriweb]: http://www.cs.helsinki.fi/u/lranta/
