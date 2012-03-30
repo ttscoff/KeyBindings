@@ -210,12 +210,20 @@ This documentation is generated automatically from the comments and commands in 
 	<td style="text-align:left;">decrease markdown header level</td>
 </tr>
 <tr>
+	<td style="text-align:center;">^&lt;</td>
+	<td style="text-align:left;">Make selected text into paired HTML tag. Allows attributes, only dupes first word into closing tag (caveat: overwrites your pasteboard)</td>
+</tr>
+<tr>
 	<td style="text-align:center;">⌥r</td>
 	<td style="text-align:left;">repeat character before cursor</td>
 </tr>
 <tr>
-	<td style="text-align:center;">⌘\⇧uf728</td>
+	<td style="text-align:center;">⌘⇧⌦</td>
 	<td style="text-align:left;">Forward delete to end of paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌘⇧⌫</td>
+	<td style="text-align:left;">Delete to beginning of paragraph</td>
 </tr>
 </tbody>
 </table>
@@ -253,7 +261,7 @@ This documentation is generated automatically from the comments and commands in 
 	<td style="text-align:center;">^⌘c</td>
 	<td style="text-align:center;"></td>
 	<td style="text-align:center;">!</td>
-	<td style="text-align:left;">Html Commenting</td>
+	<td style="text-align:left;">HTML commenting</td>
 </tr>
 <tr>
 	<td style="text-align:center;">^⌘c</td>
@@ -309,7 +317,7 @@ This documentation is generated automatically from the comments and commands in 
 	<td style="text-align:center;">^⌘w</td>
 	<td style="text-align:center;"></td>
 	<td style="text-align:center;">+</td>
-	<td style="text-align:left;">Unordered list item with +</td>
+	<td style="text-align:left;">Unordered list item with</td>
 </tr>
 <tr>
 	<td style="text-align:center;">^⌘w</td>
@@ -596,106 +604,6 @@ This documentation is generated automatically from the comments and commands in 
 	<td style="text-align:center;"></td>
 	<td style="text-align:center;">`</td>
 	<td style="text-align:left;">wrap backticks</td>
-</tr>
-</tbody>
-</table>
-
-
-<table>
-<caption id="vimexamplecommandsalittlevimjustasanexample"> Vim Example commands (A little vim, just as an example) </caption>
-<colgroup>
-<col style="text-align:center;"/>
-<col style="text-align:center;"/>
-<col style="text-align:center;"/>
-<col style="text-align:left;"/>
-</colgroup>
-
-<thead>
-<tr>
-	<th style="text-align:center;" colspan="4">Vim Example commands (A little vim, just as an example) (⇧⎋)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">p</td>
-	<td style="text-align:left;">paste after</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⇧p</td>
-	<td style="text-align:left;">paste before</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">y</td>
-	<td style="text-align:left;">yank</td>
-</tr>
-<tr>
-	<td style="text-align:center;" colspan="3">Delete (d)</td>
-	<td style="text-align:center;"></td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">d</td>
-	<td style="text-align:center;">d</td>
-	<td style="text-align:left;">&#8216;dd&#8217; delete line/paragraph</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">d</td>
-	<td style="text-align:center;">⇧</td>
-	<td style="text-align:left;">&#8216;d$&#8217; delete from cursor to end of graf</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">d</td>
-	<td style="text-align:center;">0</td>
-	<td style="text-align:left;">&#8216;d0&#8217; delete to beginning of paragraph</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">d</td>
-	<td style="text-align:center;">^</td>
-	<td style="text-align:left;">&#8216;d^&#8217; delete to beginning of paragraph</td>
-</tr>
-<tr>
-	<td style="text-align:center;" colspan="4"></td>
-</tr>
-<tr>
-	<td style="text-align:center;" colspan="3">Repeat 5 times (5)</td>
-	<td style="text-align:center;"></td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">5</td>
-	<td style="text-align:center;">d,d</td>
-	<td style="text-align:left;">&#8216;dd&#8217; delete line/paragraph</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">5</td>
-	<td style="text-align:center;">d,p</td>
-	<td style="text-align:left;">paste after</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">5</td>
-	<td style="text-align:center;">d,⇧p</td>
-	<td style="text-align:left;">paste before</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⇧⎋</td>
-	<td style="text-align:center;">5</td>
-	<td style="text-align:center;">d,y</td>
-	<td style="text-align:left;">yank</td>
-</tr>
-<tr>
-	<td style="text-align:center;" colspan="4"></td>
 </tr>
 </tbody>
 </table>

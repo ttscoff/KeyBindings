@@ -205,6 +205,8 @@
           "c" = ( setMark:, swapWithMark:, deleteToMark:, insertText:, "<img src=\"", paste:, insertText:, "\" alt=\"", setMark:, yank:, insertText:, "\">", swapWithMark: );
       };
   };
+  // Make selected text into paired HTML tag. Allows attributes, only dupes first word into closing tag (caveat: overwrites your pasteboard)
+  "^<" = ( setMark:, deleteToMark:, insertText:, "<", setMark:, yank:, swapWithMark:, moveWordForwardAndModifySelection:, copy:, swapWithMark:, "insertText:", ">", "setMark:", "insertText:", "</", "paste:", "insertText:", ">", "swapWithMark:");
 
   "^@s" = {   // Surround commands
     // wrap () with spaces
@@ -267,6 +269,7 @@
   // repeat character before cursor
   "~r" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
   // Forward delete to end of paragraph
-  "@\Uf728" = (deleteToEndOfParagraph:);
-
+  "@$\Uf728" = (deleteToEndOfParagraph:);
+  // Delete to beginning of paragraph
+  "@$\177" = (deleteToBeginningOfParagraph:);
 }
