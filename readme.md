@@ -1,4 +1,4 @@
-DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness. Documentation last updated 03/30/2012.
+DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness. Documentation last updated 04/22/2012.
 
 [lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
 [lriweb]: http://www.cs.helsinki.fi/u/lranta/
@@ -147,7 +147,7 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 <tr>
 	<td style="text-align:center;">^⇧⌘←</td>
-	<td style="text-align:left;">Full outdent - Deletes all leading space (or first word) of line/paragraph ( Control-shift-command-left arrow)</td>
+	<td style="text-align:left;">Full outdent - Deletes all leading space of line/paragraph (updated) ( Control-shift-command-left arrow)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⌥⇧↑</td>
@@ -164,6 +164,26 @@ This documentation is generated automatically from the comments and commands in 
 <tr>
 	<td style="text-align:center;">^⌥⇧→</td>
 	<td style="text-align:left;">modify selection right by word</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌘⌥^←</td>
+	<td style="text-align:left;">Move to first Alphanumeric character of line (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌘⌥←</td>
+	<td style="text-align:left;">Move to first non-whitespace character of line (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌘⌥⇧←</td>
+	<td style="text-align:left;">Select to first character of line with leading space (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌥⌘→</td>
+	<td style="text-align:left;">Move to last non-whitespace character of paragraph (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌥→</td>
+	<td style="text-align:left;">Move to end of paragraph and delete trailing whitespace (new)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘↩</td>
@@ -210,6 +230,14 @@ This documentation is generated automatically from the comments and commands in 
 	<td style="text-align:left;">decrease markdown header level</td>
 </tr>
 <tr>
+	<td style="text-align:center;">^⌥↩</td>
+	<td style="text-align:left;">Add hard break for current line and insert newline below (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">^⌘↩</td>
+	<td style="text-align:left;">Break line at cursor and add Markdown hard line break (new)</td>
+</tr>
+<tr>
 	<td style="text-align:center;">^&lt;</td>
 	<td style="text-align:left;">Make selected text into paired HTML tag. Allows attributes, only dupes first word into closing tag (caveat: overwrites your pasteboard)</td>
 </tr>
@@ -224,6 +252,10 @@ This documentation is generated automatically from the comments and commands in 
 <tr>
 	<td style="text-align:center;">⌘⇧⌫</td>
 	<td style="text-align:left;">Delete to beginning of paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌘⌥7</td>
+	<td style="text-align:left;">Right mouse click (useless, doesn&#8217;t maintain cursor position)</td>
 </tr>
 </tbody>
 </table>

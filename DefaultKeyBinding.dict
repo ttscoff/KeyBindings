@@ -69,8 +69,8 @@
   "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > Control-shift-command-left arrow
-  // Full outdent - Deletes all leading space (or first word) of line/paragraph
-  "^$@\UF702" = (setMark:, moveToBeginningOfParagraph:, selectWord:, delete:, swapWithMark:, moveLeft:);
+  // Full outdent - Deletes all leading space of line/paragraph (updated)
+  "^$@\UF702" = (setMark:, moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, delete:, swapWithMark:);
 
   // modify selection up by paragraph (Command Option Shift Up)
   "@~$\Uf700" = (selectParagraph:, moveParagraphBackwardAndModifySelection:);
@@ -80,6 +80,17 @@
   "^~$\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
   // modify selection right by word
   "^~$\UF703" = (selectWord:, moveWordRightAndModifySelection:);
+
+  // Move to first Alphanumeric character of line (new)
+  "@~^\UF702" = (moveToBeginningOfParagraph:,moveWordRight:, moveWordLeft:);
+  // Move to first non-whitespace character of line (new)
+  "@~\UF702" = (moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, moveRight:, setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
+  // Select to first character of line with leading space (new)
+  "@~$\UF702" = (setMark:,moveToBeginningOfParagraph:,selectWord:, moveRight:, selectToMark:);
+  // Move to last non-whitespace character of paragraph (new)
+  "~@\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveLeft:, setMark:, moveToEndOfParagraph:, deleteBackward:, swapWithMark:);
+  // Move to end of paragraph and delete trailing whitespace (new)
+  "^~\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:);
 
   // TextMate Command-Return (Command Enter)
   "@\U000D" = (moveToEndOfParagraph:, insertNewline:);
@@ -122,6 +133,11 @@
   "@~=" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, delete:, swapWithMark:, moveRight:);
   // decrease markdown header level
   "@~-" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
+
+  // Add hard break for current line and insert newline below (new)
+  "^~\U000D" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, "  ", insertNewline:);
+  // Break line at cursor and add Markdown hard line break (new)
+  "^@\U000D" = (insertText:, "  ", insertNewline:);
 
   "^@w" = { // Multi-stroke Markdown commands
     // force carriage return in text field
@@ -272,4 +288,6 @@
   "@$\Uf728" = (deleteToEndOfParagraph:);
   // Delete to beginning of paragraph
   "@$\177" = (deleteToBeginningOfParagraph:);
+  // Right mouse click (useless, doesn't maintain cursor position)
+  "@~7" = (setMark:, rightMouseDown:, swapWithMark:);
 }
