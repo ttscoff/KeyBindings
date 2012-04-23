@@ -1,11 +1,16 @@
-DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys]. See Lri's [gists][lrigists] and [website][lriweb] for more coding madness. Documentation last updated 04/22/2012.
+DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys].
+Please note that these bindings won't work in all applications: TextWrangler and TextMate, for example, override these with their own settings.
+See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
 
 [lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
 [lriweb]: http://www.cs.helsinki.fi/u/lranta/
 [lrigists]: https://gist.github.com/Lri
 [brett terpstra]: http://brettterpstra.com
 
-This documentation is generated automatically from the comments and commands in the DefaultKeyBinding.dict file. The script `document_keybindings.rb` is free for use, but it's specifically designed for use with my formatting in the bindings plist (i.e. it's a little finicky).
+<b>Installation</b>: Copy the DefaultKeyBindings.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist). 
+Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
+
+<b>Documentation</b> <i>(last updated 04/23/2012.)</i>
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 
@@ -639,4 +644,7 @@ This documentation is generated automatically from the comments and commands in 
 </tr>
 </tbody>
 </table>
+
+
+This documentation is generated automatically from the comments and commands in the DefaultKeyBinding.dict file. The script `document_keybindings.rb` is free for use, but it's specifically designed for use with my formatting in the bindings plist (i.e. it's a little finicky).
 
