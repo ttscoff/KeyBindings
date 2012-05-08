@@ -68,9 +68,9 @@ end
 
 def translate_command(str)
   str = str.gsub(/~/,'⌥').gsub(/@/,'⌘').gsub(/\$/,'⇧')
-  str = str.gsub('\Uf700','↑').gsub('\Uf701','↓').gsub('\UF703','→').gsub('\UF702','←')
+  str = str.gsub('\UF700','↑').gsub('\UF701','↓').gsub('\UF703','→').gsub('\UF702','←')
   str = str.gsub('\U0009','⇥').gsub('\U000D','↩').gsub('\U001B','⎋').gsub('\U000A','␍')
-  str = str.gsub('\Uf728','⌦').gsub('\177','⌫')
+  str = str.gsub('\UF728','⌦').gsub('\177','⌫')
   str = str.gsub(/([\[\]|])/,"\\\1")
   str = str.gsub(/([A-Z])/,'⇧\\1').downcase
   str

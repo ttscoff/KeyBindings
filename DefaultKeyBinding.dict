@@ -24,6 +24,8 @@
   "~S" = (moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:, moveRightAndModifySelection:);
   // select from beginning of paragrah to last character
   "~s" = (moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:);
+  // select paragraph excluding leading/trailing whitespace (same as ^$@\UF701)
+  "^~S" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveBackward:, moveToBeginningOfParagraphAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:);
   // delete line/paragraph
   "~d" = (selectParagraph:, delete:, moveToBeginningOfParagraph:);
   // copy paragraph
@@ -56,7 +58,7 @@
   // indent line
   "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
   // outdent line (one tab or char)
-  "^@h" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
+  "^@h" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > same commands but with arrow keys
   // move line up
@@ -66,12 +68,17 @@
   // indent line
   "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
   // outdent line (one tab or char)
-  "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
+  "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > Control-shift-command-left arrow
   // Full outdent - Deletes all leading space of line/paragraph (updated)
   "^$@\UF702" = (setMark:, moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, delete:, swapWithMark:);
-
+  // Delete trailing space
+  "^$@\UF703" = (setMark:,moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, swapWithMark:);
+  // Delete leading and trailing whitespace for paragraph
+  "^@$\UF700" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, delete:, swapWithMark:);
+  // Select paragraph without leading or trailing whitespace (same as "^~s")
+  "^@$\UF701" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveBackward:, moveToBeginningOfParagraphAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:);
   // modify selection up by paragraph (Command Option Shift Up)
   "@~$\Uf700" = (selectParagraph:, moveParagraphBackwardAndModifySelection:);
   // modify selection down by paragraph (Command Option Shift Down)
@@ -115,9 +122,9 @@
 
   "^@c" = { // Commenting commands
       // comment with "//"
-      "/" = (setMark:, moveToBeginningOfParagraph:, insertText:, "// ", swapWithMark:, moveRight:, moveRight:, moveRight:);
+      "/" = (moveToBeginningOfParagraph:, insertText:, "// ", moveToEndOfParagraph:, moveForward:);
       // comment with "#"
-      "\\" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", swapWithMark:, moveRight:, moveRight:);
+      "\\" = (moveToBeginningOfParagraph:, insertText:, "# ", moveToEndOfParagraph:, moveForward:);
       // HTML commenting
       "!" = (setMark:, swapWithMark:, delete:, insertText:, "<!-- ", yank:, insertText:, " -->", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
       // Css Commenting
