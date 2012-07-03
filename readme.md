@@ -7,8 +7,10 @@ See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
 [lrigists]: https://gist.github.com/Lri
 [brett terpstra]: http://brettterpstra.com
 
-<b>Installation</b>: Copy the DefaultKeyBindings.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist). 
+**Installation:** Copy the DefaultKeyBindings.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist). 
 Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
+
+For more information, see my [blog post](http://brettterpstra.com/keybinding-madness/), check out [Macworld hints](http://hints.macworld.com/article.php?story=20060317045211408), an older but very relevant [article from Harvard](http://www.hcs.harvard.edu/~jrus/site/cocoa-text.html) and do [a search for more information](http://duckduckgo.com/?q=cocoa+defaultkeybindings.dict).
 
 <b>Documentation</b> <i>(last updated 05/08/2012.)</i>
 
