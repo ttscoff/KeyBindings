@@ -29,14 +29,14 @@
 Please note that these bindings won't work in all applications: TextWrangler and TextMate, for example, override these with their own settings.
 See Lri's <a href="https://gist.github.com/Lri">gists</a> and <a href="http://www.cs.helsinki.fi/u/lranta/">website</a> for more coding madness.</p>
 
-<p><b>Installation</b>: Copy the DefaultKeyBindings.dict file to the <code>~/Library/KeyBindings/</code> directory (create <code>KeyBindings</code> if it doesn't already exist). 
+<p><b>Installation</b>: Copy the DefaultKeyBindings.dict file to the <code>~/Library/KeyBindings/</code> directory (create <code>KeyBindings</code> if it doesn't already exist).
 Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.</p>
 
 <p><b>Documentation</b> <i>(last updated 04/23/2012.)</i></p>
 
 <p><em>Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.</em></p>
 
-<table> General Commands 
+<table> General Commands
 <tr>
 <th colspan="2">General Commands</th>
 </tr>
@@ -272,7 +272,7 @@ Any open applications will need to be re-started before the key bindings will ta
 <td>⌘⌥7</td>
     <td>Right mouse click (useless, doesn’t maintain cursor position)</td>
 </tr>
-</table><table> Commenting commands 
+</table><table> Commenting commands
 <tr>
 <th colspan="4">Commenting commands (^⌘c)</th>
 </tr>
@@ -300,7 +300,7 @@ Any open applications will need to be re-started before the key bindings will ta
     <td>*</td>
     <td>Css Commenting</td>
 </tr>
-</table><table> Multi-stroke Markdown commands 
+</table><table> Multi-stroke Markdown commands
 <tr>
 <th colspan="4">Multi-stroke Markdown commands (^⌘w)</th>
 </tr>
@@ -463,7 +463,7 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 <td colspan="4"></td>
 </tr>
-</table><table> HTML commands 
+</table><table> HTML commands
 <tr>
 <th colspan="4">HTML commands (^⌘e)</th>
 </tr>
@@ -529,7 +529,7 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 <td colspan="4"></td>
 </tr>
-</table><table> Surround commands 
+</table><table> Surround commands
 <tr>
 <th colspan="4">Surround commands (^⌘s)</th>
 </tr>
@@ -595,12 +595,24 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 </table><p>This documentation is generated automatically from the comments and commands in the DefaultKeyBinding.dict file. The script <code>document_keybindings.rb</code> is free for use, but it's specifically designed for use with my formatting in the bindings plist (i.e. it's a little finicky).</p>
       </section>
+
+    <section id="kbrepo"></section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/ttscoff">ttscoff</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="repo.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      (function($){
+        $('#kbrepo').repo({ user: 'ttscoff', name: 'KeyBindings' });
+      })(jQuery);
+    </script>
+
+
   </body>
 </html>
