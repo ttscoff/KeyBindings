@@ -20,6 +20,8 @@
   "^w" = (deleteWordBackward:);
   // select word
   "~w" = (selectWord:);
+  // select word backward and modify selection
+  "~W" = (moveWordBackwardAndModifySelection:);
   // select entire line/paragraph
   "~S" = (moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:, moveRightAndModifySelection:);
   // select from beginning of paragrah to last character
@@ -62,9 +64,9 @@
 
   // > same commands but with arrow keys
   // move line up
-  "^@\Uf700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
+  "^@\UF700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
   // move line down
-  "^@\Uf701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
+  "^@\UF701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
   // indent line
   "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
   // outdent line (one tab or char)
@@ -77,12 +79,12 @@
   "^$@\UF703" = (setMark:,moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, swapWithMark:);
   // Delete leading and trailing whitespace for paragraph
   "^@$\UF700" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, delete:, swapWithMark:);
-  // Select paragraph without leading or trailing whitespace (same as "^~s")
+  // Select paragraph without leading or trailing whitespace
   "^@$\UF701" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveBackward:, moveToBeginningOfParagraphAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:);
-  // modify selection up by paragraph (Command Option Shift Up)
-  "@~$\Uf700" = (selectParagraph:, moveParagraphBackwardAndModifySelection:);
-  // modify selection down by paragraph (Command Option Shift Down)
-  "@~$\Uf701" = (selectParagraph:, moveParagraphForwardAndModifySelection:);
+  // modify selection up by paragraph (Control Option Shift Up)
+  "^~$\UF700" = (selectParagraph:, moveParagraphBackwardAndModifySelection:);
+  // modify selection down by paragraph (Control Option Shift Down)
+  "^~$\UF701" = (selectParagraph:, moveParagraphForwardAndModifySelection:);
   // modify selection left by word
   "^~$\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
   // modify selection right by word
@@ -106,7 +108,7 @@
 
   // > this will kill non alphanumeric symbols and punctuation, use only on *words*
   // hyphenate next space and move to next word
-  "~_" = (selectWord:,moveRight:,setMark:,moveWordRight:,moveWordLeft:,moveLeft:,selectWord:,insertText:,"-",moveWordRight:);
+  "@~_" = (selectWord:,moveRight:,setMark:,moveWordRight:,moveWordLeft:,moveLeft:,selectWord:,insertText:,"-",moveWordRight:);
 
   // bookmark
   "~1" = (setMark:);
@@ -142,9 +144,9 @@
   "@~-" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
 
   // Add hard break for current line and insert newline below (new)
-  "^~\U000D" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, "  ", insertNewline:);
+  // "^~\U000D" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, "  ", insertNewline:);
   // Break line at cursor and add Markdown hard line break (new)
-  "^@\U000D" = (insertText:, "  ", insertNewline:);
+  // "^~@\U000D" = (insertText:, "  ", insertNewline:);
 
   "^@w" = { // Multi-stroke Markdown commands
     // force carriage return in text field
@@ -154,7 +156,7 @@
     // insert reference link `[selection][[cursor]]`
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
     // insert reference `[selection]: [cursor]`
-    "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:, deleteForward:);
+    "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
 
     // Unordered list item with
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
@@ -292,7 +294,7 @@
   // repeat character before cursor
   "~r" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
   // Forward delete to end of paragraph
-  "@$\Uf728" = (deleteToEndOfParagraph:);
+  "@$\UF728" = (deleteToEndOfParagraph:);
   // Delete to beginning of paragraph
   "@$\177" = (deleteToBeginningOfParagraph:);
   // Right mouse click (useless, doesn't maintain cursor position)
