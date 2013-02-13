@@ -171,17 +171,17 @@
 
     "h" = { // Headlines (removes leading whitespace after inserting hashmarks)
         // #
-        "1" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:, moveToEndOfParagraph:);
+        "1" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:,moveRight:,moveRight:);
         // ##
-        "2" = (setMark:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        "2" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:);
         // ###
-        "3" = (setMark:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        "3" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:);
         // ####
-        "4" = (setMark:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        "4" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
         // #####
-        "5" = (setMark:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        "5" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
         // ######
-        "6" = (setMark:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:, moveToEndOfParagraph:);
+        "6" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
     };
     // > links
     // > without selected text first, these can produce a mess using multiple clipboards
@@ -299,4 +299,20 @@
   "@$\177" = (deleteToBeginningOfParagraph:);
   // Right mouse click (useless, doesn't maintain cursor position)
   "@~7" = (setMark:, rightMouseDown:, swapWithMark:);
+
+  // Hyper up arrow: move cursor to preceeding paragraph
+  "^~$@\UF700" = (moveToBeginningOfParagraph:,moveLeft:,moveLeft:,moveToBeginningOfParagraph:);
+  // Hyper left arrow: move cursor to next paragraph
+  "^~$@\UF701" = (moveToEndOfParagraph:,moveRight:,moveRight:,moveToBeginningOfParagraph:);
+  // Hyper right arrow: move cursor right twice as fast
+  // "^~$@\UF703" = (moveRight:,moveRight:);
+  // Hyper left arrow: move cursor left twice as fast
+  // "^~$@\UF702" = (moveLeft:,moveLeft:);
+  // Hyper left arrow: extend selection left by word
+  "^~$@\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
+  // Hyper right arrow: extend selection right by word
+  "^~$@\UF703" = (selectWord:, moveWordRightAndModifySelection:);
+
+  // Real, honest-to-goodnes Save As...
+  "@~S" = (saveAs:);
 }
