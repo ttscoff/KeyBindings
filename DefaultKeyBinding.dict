@@ -143,6 +143,11 @@
   // decrease markdown header level
   "@~-" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
 
+  // increase blockquote header level
+  "@~>" = (setMark:, moveToBeginningOfParagraph:, insertText:, "> ", swapWithMark:, moveRight:, moveRight:);
+  // decrease blockquote level
+  "@~<" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, deleteForward:, swapWithMark:, moveLeft:);
+
   // Add hard break for current line and insert newline below (new)
   // "^~\U000D" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, "  ", insertNewline:);
   // Break line at cursor and add Markdown hard line break (new)
@@ -301,17 +306,17 @@
   "@~7" = (setMark:, rightMouseDown:, swapWithMark:);
 
   // Hyper up arrow: move cursor to preceeding paragraph
-  "^~$@\UF700" = (moveToBeginningOfParagraph:,moveLeft:,moveLeft:,moveToBeginningOfParagraph:);
+  // "^~$@\UF700" = (moveToBeginningOfParagraph:,moveLeft:,moveLeft:,moveToBeginningOfParagraph:);
   // Hyper left arrow: move cursor to next paragraph
-  "^~$@\UF701" = (moveToEndOfParagraph:,moveRight:,moveRight:,moveToBeginningOfParagraph:);
+  // "^~$@\UF701" = (moveToEndOfParagraph:,moveRight:,moveRight:,moveToBeginningOfParagraph:);
   // Hyper right arrow: move cursor right twice as fast
   // "^~$@\UF703" = (moveRight:,moveRight:);
   // Hyper left arrow: move cursor left twice as fast
   // "^~$@\UF702" = (moveLeft:,moveLeft:);
   // Hyper left arrow: extend selection left by word
-  "^~$@\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
+  // "^~$@\UF702" = (selectWord:, moveWordLeftAndModifySelection:);
   // Hyper right arrow: extend selection right by word
-  "^~$@\UF703" = (selectWord:, moveWordRightAndModifySelection:);
+  // "^~$@\UF703" = (selectWord:, moveWordRightAndModifySelection:);
 
   // Real, honest-to-goodnes Save As...
   "@~S" = (saveAs:);
