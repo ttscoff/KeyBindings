@@ -23,8 +23,8 @@
   // select word backward and modify selection
   "~W" = (moveWordBackwardAndModifySelection:);
   // select entire line/paragraph
-  "~S" = (moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:, moveRightAndModifySelection:);
-  // select from beginning of paragraph to last character
+  "~S" = (selectParagraph:);
+  // select from beginning of paragrah to last character
   "~s" = (moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:);
   // select paragraph excluding leading/trailing whitespace (same as ^$@\UF701)
   "^~S" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveBackward:, moveToBeginningOfParagraphAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:);
