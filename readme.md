@@ -378,13 +378,13 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 	<td style="text-align:center;">⌃⌘w</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">\</td>
+	<td style="text-align:center;">[</td>
 	<td style="text-align:left;">insert reference link <code>[selection][[cursor]]</code></td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">\</td>
+	<td style="text-align:center;">]</td>
 	<td style="text-align:left;">insert reference <code>[selection]: [cursor]</code></td>
 </tr>
 <tr>
@@ -636,13 +636,13 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 	<td style="text-align:center;">⌃⌘s</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">\</td>
+	<td style="text-align:center;">[</td>
 	<td style="text-align:left;">wrap [] with spaces</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘s</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">\</td>
+	<td style="text-align:center;">]</td>
 	<td style="text-align:left;">wrap [] no spaces</td>
 </tr>
 <tr>
