@@ -213,11 +213,11 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⌘↩</td>
-	<td style="text-align:left;">TextMate Command-Return (Command Enter)</td>
+	<td style="text-align:left;">TextMate Command-Return (Command Return)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⇧↩</td>
-	<td style="text-align:left;">Insert blank line above paragraph (Command Shift Enter)</td>
+	<td style="text-align:left;">Insert blank line above paragraph (Command Shift Return)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⇧⌥␣</td>
@@ -241,7 +241,7 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⌥⌘↩</td>
-	<td style="text-align:left;">Continue a list item with indentation and include the same delimiter ( Command Option Enter)</td>
+	<td style="text-align:left;">Continue a list item with indentation and include the same delimiter ( Command OptionReturn)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⇧⇥</td>
@@ -261,7 +261,7 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘↩</td>
-	<td style="text-align:left;">break line with double space (Markdown) (Control-Command-Enter)</td>
+	<td style="text-align:left;">break line with double space (Markdown) (Control-Command-Return)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⌥=</td>

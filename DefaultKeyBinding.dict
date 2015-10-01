@@ -116,9 +116,9 @@
   // Move to end of paragraph and delete trailing whitespace (new)
   "^~\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:);
 
-  // TextMate Command-Return (Command Enter)
+  // TextMate Command-Return (Command Return)
   "@\U000D" = (moveToEndOfParagraph:, insertNewline:);
-  // Insert blank line above paragraph (Command Shift Enter)
+  // Insert blank line above paragraph (Command Shift Return)
   "@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
   // Insert space and uppercase next character (Shift-Option-Space) (new)
   "$~\040" = (insertText:, " ", moveForward:, insertText:, " ", moveWordBackward:, capitalizeWord:, moveForward:, deleteForward:, moveBackward:);
@@ -135,7 +135,7 @@
   // jump to bookmark
   "~2" = (swapWithMark:,centerSelectionInVisibleArea:);
 
-  // > Command Option Enter
+  // > Command OptionReturn
   // Continue a list item with indentation and include the same delimiter
   "~@\U000D" = ( breakUndoCoalescing, moveToEndOfParagraph:, insertText:, "x", moveToBeginningOfParagraph:, selectWord:, moveRightAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:, moveLeftAndModifySelection:, setMark:, deleteToMark:, yank:, moveToEndOfParagraph:, deleteBackward:, insertNewlineIgnoringFieldEditor:, deleteToBeginningOfParagraph:, yank:, insertText:, " ", selectWord:, insertText:, " ");
   // > Shift Tab
@@ -159,8 +159,8 @@
   "@~i" = (selectWord:, setMark:, swapWithMark:, deleteToMark:, insertText:, "_", yank:, insertText:, " ", moveLeft:, insertText:, "_", moveRight:, deleteBackward:);
   // backtick selection (Markdown)
   "@~`" = (selectWord:, setMark:, swapWithMark:, deleteToMark:, insertText:, "`", yank:, insertText:, " ", moveLeft:, insertText:, "`", moveRight:, deleteBackward:);
-  // break line with double space (Markdown) (Control-Command-Enter)
-  "^@\U000D" = (moveToEndOfParagraph:, insertNewline:);
+  // break line with double space (Markdown) (Control-Command-Return)
+  "^@\U000D" = (insertText:, "  ", insertNewline:);
 
   // increase markdown header level
   "@~=" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, delete:, swapWithMark:, moveRight:);
