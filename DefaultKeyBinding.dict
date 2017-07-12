@@ -180,6 +180,8 @@
   // "^~@\U000D" = (insertText:, "  ", insertNewline:);
 
   "^@w" = { // Multi-stroke Markdown commands
+    // Fence code (new)
+    // "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
     // force carriage return in text field
     "\U000A" = (insertNewlineIgnoringFieldEditor:);
     // force tab in text field
@@ -189,7 +191,7 @@
     // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
     // Fence code (new)
-    "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
+    // "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
     // Unordered list item with +
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
     // Unordered list item with -
@@ -228,11 +230,11 @@
     "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!)", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "g", selectToMark:); // link text
     "i" = { // Link as image
       // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
-      // same as lt, but with image syntax `![selected text]([cursor])`
+      // same as lt, but with image syntax `\!\[selected text]([cursor])`
       "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); //  image link for text
-      // same as lc, but with image syntax `![selected text](clipboard)`
+      // same as lc, but with image syntax `\!\[selected text](clipboard)`
       "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
-      // same as lc, but with image syntax and "+" for Droplr links `![selected text](clipboard+)`
+      // same as lc, but with image syntax and "+" for Droplr links `\!\[selected text](clipboard+)`
       "d" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, "+)", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
     };
 
@@ -242,6 +244,7 @@
       // create a reference from selected text, clipboard as url
       "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", pasteAsPlainText:, moveRight:, deleteBackward:, swapWithMark:);
     };
+
   };
 
   "^@e" = { // HTML commands

@@ -95,6 +95,9 @@ def translate_command(str)
   str
 end
 
+# input.gsub!(/\\n/,'')
+# input.gsub!(/```/,'\`\`\`')
+
 input.split("\n").each {|line|
 
   if line =~ /^\s*$/ || line =~ /^\s*\/\/\s*(TODO)/
