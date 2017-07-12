@@ -350,8 +350,7 @@
     "t" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @today", swapWithMark:);
   };
 
-  // SearchLink commands
-  "^@g" = {
+  "^@g" = { // SearchLink commands
     // SearchLink Syntax: Google (new)
     "g" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
     // SearchLink Syntax: Amazon (new)

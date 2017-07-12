@@ -260,32 +260,24 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:left;">Make selected text into paired HTML tag. Allows attributes, only dupes first word into closing tag (caveat: overwrites your pasteboard)</td>
 </tr>
 <tr>
-	<td style="text-align:center;">g</td>
-	<td style="text-align:left;">SearchLink Syntax: Google (new)</td>
+	<td style="text-align:center;">⌥r</td>
+	<td style="text-align:left;">repeat character before cursor</td>
 </tr>
 <tr>
-	<td style="text-align:center;">⇧a</td>
-	<td style="text-align:left;">SearchLink Syntax: Amazon (new)</td>
+	<td style="text-align:center;">⌘⇧⌦</td>
+	<td style="text-align:left;">Forward delete to end of paragraph</td>
 </tr>
 <tr>
-	<td style="text-align:center;">p</td>
-	<td style="text-align:left;">SearchLink Syntax: Software (new)</td>
+	<td style="text-align:center;">⌘⇧⌫</td>
+	<td style="text-align:left;">Delete to beginning of paragraph ( Command-shift-delete)</td>
 </tr>
 <tr>
-	<td style="text-align:center;">m</td>
-	<td style="text-align:left;">SearchLink Syntax: IMDB (new)</td>
+	<td style="text-align:center;">⌘⌥7</td>
+	<td style="text-align:left;">Right mouse click (useless, doesn&#8217;t maintain cursor position)</td>
 </tr>
 <tr>
-	<td style="text-align:center;">b</td>
-	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com (new)</td>
-</tr>
-<tr>
-	<td style="text-align:center;">p</td>
-	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com Projects (new)</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⌘</td>
-	<td style="text-align:left;">SearchLink Syntax: Twitter User (new)</td>
+	<td style="text-align:center;">⌘⌥⇧s</td>
+	<td style="text-align:left;">Real, honest-to-goodnes Save As&#8230;</td>
 </tr>
 </tbody>
 </table>
@@ -402,8 +394,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:left;">convert current bullet list item to numbered</td>
 </tr>
 <tr>
-	<td style="text-align:center;" colspan="3">Headlines (removes leading whitespace after inserting hashmarks) (h)</td>
-	<td style="text-align:left;"></td>
+	<td style="text-align:center;" colspan="4">Headlines (removes leading whitespace after inserting hashmarks) (h)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w</td>
@@ -445,8 +436,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;" colspan="4"></td>
 </tr>
 <tr>
-	<td style="text-align:center;" colspan="3">Markdown link (l)</td>
-	<td style="text-align:left;"></td>
+	<td style="text-align:center;" colspan="4">Markdown link (l)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w</td>
@@ -470,8 +460,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:left;">SearchLink Basic Link</td>
 </tr>
 <tr>
-	<td style="text-align:center;" colspan="3">Link as image (i)</td>
-	<td style="text-align:left;"></td>
+	<td style="text-align:center;" colspan="4">Link as image (i)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w</td>
@@ -495,8 +484,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;" colspan="4"></td>
 </tr>
 <tr>
-	<td style="text-align:center;" colspan="3">Reference links (:)</td>
-	<td style="text-align:left;"></td>
+	<td style="text-align:center;" colspan="4">Reference links (:)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w</td>
@@ -556,8 +544,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:left;">Make previous word into paired HTML tag</td>
 </tr>
 <tr>
-	<td style="text-align:center;" colspan="3">HTML Links (a)</td>
-	<td style="text-align:left;"></td>
+	<td style="text-align:center;" colspan="4">HTML Links (a)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘e</td>
@@ -575,8 +562,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;" colspan="4"></td>
 </tr>
 <tr>
-	<td style="text-align:center;" colspan="3">HTML Image (i)</td>
-	<td style="text-align:left;"></td>
+	<td style="text-align:center;" colspan="4">HTML Image (i)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘e</td>
@@ -762,52 +748,70 @@ Any open applications will need to be re-started before the key bindings will ta
 
 <thead>
 <tr>
-	<th style="text-align:center;" colspan="4">Apple (a)</th>
+	<th style="text-align:center;" colspan="4">SearchLink commands (⌃⌘g)</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-	<td style="text-align:center;">a</td>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
+	<td style="text-align:center;">g</td>
+	<td style="text-align:left;">SearchLink Syntax: Google (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">⇧a</td>
+	<td style="text-align:left;">SearchLink Syntax: Amazon (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;" colspan="4">Apple (a)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;">a</td>
 	<td style="text-align:center;">i</td>
 	<td style="text-align:left;">SearchLink Syntax: iOS App (new)</td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;">a</td>
-	<td style="text-align:center;"></td>
 	<td style="text-align:center;">m</td>
 	<td style="text-align:left;">SearchLink Syntax: Mac App Store (new)</td>
 </tr>
 <tr>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⌥r</td>
-	<td style="text-align:left;">repeat character before cursor</td>
+	<td style="text-align:center;" colspan="4"></td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⌘⇧⌦</td>
-	<td style="text-align:left;">Forward delete to end of paragraph</td>
+	<td style="text-align:center;">p</td>
+	<td style="text-align:left;">SearchLink Syntax: Software (new)</td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⌘⇧⌫</td>
-	<td style="text-align:left;">Delete to beginning of paragraph ( Command-shift-delete)</td>
+	<td style="text-align:center;">m</td>
+	<td style="text-align:left;">SearchLink Syntax: IMDB (new)</td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⌘⌥7</td>
-	<td style="text-align:left;">Right mouse click (useless, doesn&#8217;t maintain cursor position)</td>
+	<td style="text-align:center;">b</td>
+	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com (new)</td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
+	<td style="text-align:center;">p</td>
+	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com Projects (new)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⌘⌥⇧s</td>
-	<td style="text-align:left;">Real, honest-to-goodnes Save As&#8230;</td>
+	<td style="text-align:center;">⌘</td>
+	<td style="text-align:left;">SearchLink Syntax: Twitter User (new)</td>
 </tr>
 </tbody>
 </table>

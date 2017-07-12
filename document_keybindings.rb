@@ -128,7 +128,7 @@ input.split("\n").each {|line|
     elsif level == 2
       subgroup_command = translate_command($1)
       subgroup_desc = $2
-      output += "|#{subgroup_desc} (#{subgroup_command})||| |\n"
+      output += "|#{subgroup_desc} (#{subgroup_command})||||\n"
     else
       prefix = $1
     end
