@@ -41,7 +41,7 @@ td:last-child { font-weight:normal;width:auto }
 STYLE
 
 intro =<<INTRO
-DefaultKeyBindings.dict file (`~/Library/KeyBindings/DefaultKeyBindings.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys].
+DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys].
 Please note that these bindings won't work in all applications: TextWrangler and TextMate, for example, override these with their own settings.
 See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
 
@@ -50,7 +50,7 @@ See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
 [lrigists]: https://gist.github.com/Lri
 [Brett Terpstra]: http://brettterpstra.com
 
-<b>Installation</b>: Copy the DefaultKeyBindings.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist).
+<b>Installation</b>: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist).
 Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
 
 <b>Documentation</b> <i>(last updated #{date}.)</i>
