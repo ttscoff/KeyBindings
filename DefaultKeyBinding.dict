@@ -103,17 +103,17 @@
   // expand the selection left and right by word (stupid experiment)
   // "^~\UF700" = (selectWord:, moveWordBackwardAndModifySelection:, setMark:, swapWithMark:, moveWordForwardAndModifySelection:);
 
-  // Move to first Alphanumeric character of line (new)
+  // Move to first Alphanumeric character of line
   "@~^\UF702" = (moveToBeginningOfParagraph:,moveWordRight:, moveWordLeft:);
-  // Move to first non-whitespace character of line (new)
+  // Move to first non-whitespace character of line
   "@~\UF702" = (moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, moveRight:, setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
-  // Select to first word of paragraph modifying selection (new)
+  // Select to first word of paragraph modifying selection
   "@~$\UF702" = (setMark:,moveToBeginningOfParagraph:,moveWordRight:, moveWordLeft:, selectToMark:);
-  // Select to end of paragraph modifying selection (new)
+  // Select to end of paragraph modifying selection
   "@~$\UF703" = (setMark:,moveToEndOfParagraph:,selectToMark:);
-  // Move to last non-whitespace character of paragraph (new)
+  // Move to last non-whitespace character of paragraph
   "~@\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveLeft:, setMark:, moveToEndOfParagraph:, deleteBackward:, swapWithMark:);
-  // Move to end of paragraph and delete trailing whitespace (new)
+  // Move to end of paragraph and delete trailing whitespace
   "^~\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:);
 
   // TextMate Command-Return (Command Return)
@@ -174,9 +174,9 @@
   // decrease blockquote level
   "@~<" = (setMark:, moveToBeginningOfParagraph:, deleteForward:, deleteForward:, swapWithMark:, moveLeft:, moveLeft:);
 
-  // Add hard break for current line and insert newline below (new)
+  // Add hard break for current line and insert newline below
   // "^~\U000D" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, "  ", insertNewline:);
-  // Break line at cursor and add Markdown hard line break (new)
+  // Break line at cursor and add Markdown hard line break
   // "^~@\U000D" = (insertText:, "  ", insertNewline:);
 
   "^@w" = { // Multi-stroke Markdown commands
@@ -188,7 +188,8 @@
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
     // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
-
+    // Fence code (new)
+    "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
     // Unordered list item with +
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
     // Unordered list item with -
@@ -202,37 +203,37 @@
 
     "h" = { // Headlines (removes leading whitespace after inserting hashmarks)
         // #
-        "1" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:,moveRight:,moveRight:);
+        "1" = (setMark:, moveToBeginningOfParagraph:, insertText:, "# ", selectWord:, insertText:, " ",swapWithMark:,moveRight:,moveRight:);
         // ##
-        "2" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:);
+        "2" = (setMark:, moveToBeginningOfParagraph:, insertText:, "## ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:);
         // ###
-        "3" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:);
+        "3" = (setMark:, moveToBeginningOfParagraph:, insertText:, "### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:);
         // ####
-        "4" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
+        "4" = (setMark:, moveToBeginningOfParagraph:, insertText:, "#### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
         // #####
-        "5" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
+        "5" = (setMark:, moveToBeginningOfParagraph:, insertText:, "##### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
         // ######
-        "6" = (setMark:, breakUndoCoalescing:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
+        "6" = (setMark:, moveToBeginningOfParagraph:, insertText:, "###### ", selectWord:, insertText:, " ", swapWithMark:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:,moveRight:);
     };
     // > links
     // > without selected text first, these can produce a mess using multiple clipboards
     // > make a text selection before you run them
     "l" = { // Markdown link
       // create a link for selected text, cursor between () `[selected text]([cursor])`
-      "t" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
+      "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
       // create a link for selected text, inserting clipboard as url `[[cursor]selected text](clipboard contents)`
-      "c" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:); // link with clipboard
+      "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:); // link with clipboard
     };
     // SearchLink Basic Link
-    "s" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!)", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "g", selectToMark:); // link text
+    "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!)", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "g", selectToMark:); // link text
     "i" = { // Link as image
       // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
       // same as lt, but with image syntax `![selected text]([cursor])`
-      "t" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); //  image link for text
+      "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); //  image link for text
       // same as lc, but with image syntax `![selected text](clipboard)`
-      "c" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
+      "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
       // same as lc, but with image syntax and "+" for Droplr links `![selected text](clipboard+)`
-      "d" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, "+)", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
+      "d" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, "+)", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
     };
 
     ":" = { // Reference links
@@ -241,31 +242,6 @@
       // create a reference from selected text, clipboard as url
       "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", pasteAsPlainText:, moveRight:, deleteBackward:, swapWithMark:);
     };
-  };
-
-  "^@g" = { // SearchLink commands
-    // SearchLink Syntax: Google
-    "g" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: Amazon
-    "A" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!a)", moveRight:, deleteBackward:, moveLeft:);
-    "a" = { // Apple
-      // SearchLink Syntax: iOS App
-      "i" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!itu)", moveRight:, deleteBackward:, moveLeft:);
-      // SearchLink Syntax: Mac App Store
-      "m" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!mas)", moveRight:, deleteBackward:, moveLeft:);
-      // SearchLink Syntax: Apple Music
-      // "m" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
-    };
-    // SearchLink Syntax: Software
-    "p" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!s)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: IMDB
-    "m" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!imdb)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: BrettTerpstra.com
-    "b" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!bt)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: BrettTerpstra.com Projects
-    "p" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!btp)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: Twitter User
-    "@" = (setMark:, breakUndoCoalescing:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!@t)", moveRight:, deleteBackward:, moveLeft:);
   };
 
   "^@e" = { // HTML commands
@@ -350,29 +326,52 @@
   //         "y" = ( yank:, yank:, yank:, yank:, yank:);
   //     };
   // };
+  //
+  "^@j" = { // Jekyll Shortcuts
+    // Pullquote Liquid Tag (new)
+    "p" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {\"", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "\"}", moveRight:, moveRight:, deleteBackward:, moveToBeginningOfParagraph:, insertText:, "{% pullquote %}\n", moveToEndOfParagraph:, insertText:, "\n{% endpullquote %}");
+    // Raw Liquid Tag (new)
+    "r" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {% raw %}", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "{% endraw %} ", moveRight:, deleteBackward:, deleteBackward:);
+    // Raw Tag for entire paragraph (new)
+    "R" = (setMark:, moveToBeginningOfParagraph:, insertText:, "{% raw %}\n", moveToEndOfParagraph:, insertText:, "\n{% endraw %}", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
+  };
 
   "^@t" = { // TaskPaper Tags
-    // @done
+    // @done (new)
     "d" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @done", swapWithMark:);
-    // @priority()
+    // // @priority() (new)
     "p" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @priority()", moveLeft:);
-    // @na
+    // @na (new)
     "n" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @na", swapWithMark:);
-    // @today
+    // @today (new)
     "t" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @today", swapWithMark:);
   };
 
-  "^@j" = { // Jekyll Liquid Tags
-    // Pullquote Liquid Tag
-    "p" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {\"", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "\"}", moveRight:, moveRight:, deleteBackward:, moveToBeginningOfParagraph:, insertText:, "{% pullquote %}\n", moveToEndOfParagraph:, insertText:, "\n{% endpullquote %}");
-    // Raw Liquid Tag
-    "r" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {% raw %}", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "{% endraw %} ", moveRight:, deleteBackward:, deleteBackward:);
-    // Raw Tag for entire paragraph
-    "R" = (setMark:, moveToBeginningOfParagraph:, insertText:, "{% raw %}\n", moveToEndOfParagraph:, insertText:, "\n{% endraw %}", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
-    // Fence code
-    "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
+  // SearchLink commands
+  "^@g" = {
+    // SearchLink Syntax: Google (new)
+    "g" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
+    // SearchLink Syntax: Amazon (new)
+    "A" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!a)", moveRight:, deleteBackward:, moveLeft:);
+    "a" = { // Apple
+      // SearchLink Syntax: iOS App (new)
+      "i" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!itu)", moveRight:, deleteBackward:, moveLeft:);
+      // SearchLink Syntax: Mac App Store (new)
+      "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!mas)", moveRight:, deleteBackward:, moveLeft:);
+      // SearchLink Syntax: Apple Music
+      // "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
+    };
+    // SearchLink Syntax: Software (new)
+    "p" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!s)", moveRight:, deleteBackward:, moveLeft:);
+    // SearchLink Syntax: IMDB (new)
+    "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!imdb)", moveRight:, deleteBackward:, moveLeft:);
+    // SearchLink Syntax: BrettTerpstra.com (new)
+    "b" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!bt)", moveRight:, deleteBackward:, moveLeft:);
+    // SearchLink Syntax: BrettTerpstra.com Projects (new)
+    "p" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!btp)", moveRight:, deleteBackward:, moveLeft:);
+    // SearchLink Syntax: Twitter User (new)
+    "@" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!@t)", moveRight:, deleteBackward:, moveLeft:);
   };
-
 
   // repeat character before cursor
   "~r" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
