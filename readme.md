@@ -5,12 +5,12 @@ See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
 [lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
 [lriweb]: http://www.cs.helsinki.fi/u/lranta/
 [lrigists]: https://gist.github.com/Lri
-[brett terpstra]: http://brettterpstra.com
+[Brett Terpstra]: http://brettterpstra.com
 
 <b>Installation</b>: Copy the DefaultKeyBindings.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist).
 Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
 
-<b>Documentation</b> <i>(last updated 10/01/2015.)</i>
+<b>Documentation</b> <i>(last updated 07/12/2017.)</i>
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 
@@ -44,16 +44,8 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:left;">lowercase word</td>
 </tr>
 <tr>
-	<td style="text-align:center;">⌃⇧t</td>
-	<td style="text-align:left;">titlecase word</td>
-</tr>
-<tr>
 	<td style="text-align:center;">⌃⌥⇧u</td>
 	<td style="text-align:left;">uppercase current paragraph</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⌃⌥t</td>
-	<td style="text-align:left;">titlecase paragraph</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃w</td>
@@ -122,22 +114,6 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 	<td style="text-align:center;">⌥⇧o</td>
 	<td style="text-align:left;">blank line before current</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⌃⌘k</td>
-	<td style="text-align:left;">move line up</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⌃⌘j</td>
-	<td style="text-align:left;">move line down</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⌃⌘l</td>
-	<td style="text-align:left;">indent line</td>
-</tr>
-<tr>
-	<td style="text-align:center;">⌃⌘h</td>
-	<td style="text-align:left;">outdent line (one tab or char)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘↑</td>
@@ -221,11 +197,11 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⇧⌥␣</td>
-	<td style="text-align:left;">Insert space and uppercase next character (Shift-Option-Space) (new)</td>
+	<td style="text-align:left;">Insert space and uppercase next character (Shift-Option-Space)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⇧␣</td>
-	<td style="text-align:left;">Uppercase next character (Control-Shift-Space) (new)</td>
+	<td style="text-align:left;">Uppercase next character (Control-Shift-Space)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⌥_</td>
@@ -241,7 +217,7 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⌥⌘↩</td>
-	<td style="text-align:left;">Continue a list item with indentation and include the same delimiter ( Command OptionReturn)</td>
+	<td style="text-align:left;">Continue a list item with indentation and include the same delimiter ( Command Option Return)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⇧⇥</td>
@@ -480,6 +456,12 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;" colspan="4"></td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌘w</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">s</td>
+	<td style="text-align:left;">SearchLink Basic Link</td>
+</tr>
+<tr>
 	<td style="text-align:center;" colspan="3">Link as image (i)</td>
 	<td style="text-align:left;"></td>
 </tr>
@@ -522,6 +504,85 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;" colspan="4"></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:center;" colspan="4">SearchLink commands (⌃⌘g)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">g</td>
+	<td style="text-align:left;">SearchLink Syntax: Google</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">⇧a</td>
+	<td style="text-align:left;">SearchLink Syntax: Amazon</td>
+</tr>
+<tr>
+	<td style="text-align:center;" colspan="3">Apple (a)</td>
+	<td style="text-align:left;"></td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;">a</td>
+	<td style="text-align:center;">i</td>
+	<td style="text-align:left;">SearchLink Syntax: iOS App</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;">a</td>
+	<td style="text-align:center;">m</td>
+	<td style="text-align:left;">SearchLink Syntax: Mac App Store</td>
+</tr>
+<tr>
+	<td style="text-align:center;" colspan="4"></td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">p</td>
+	<td style="text-align:left;">SearchLink Syntax: Software</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">m</td>
+	<td style="text-align:left;">SearchLink Syntax: IMDB</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">b</td>
+	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">p</td>
+	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com Projects</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘g</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">⌘</td>
+	<td style="text-align:left;">SearchLink Syntax: Twitter User</td>
 </tr>
 </tbody>
 </table>
@@ -680,6 +741,90 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;"></td>
 	<td style="text-align:center;">`</td>
 	<td style="text-align:left;">wrap backticks</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:center;" colspan="4">TaskPaper Tags (⌃⌘t)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:center;">⌃⌘t</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">d</td>
+	<td style="text-align:left;">@done</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘t</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">p</td>
+	<td style="text-align:left;">@priority()</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘t</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">n</td>
+	<td style="text-align:left;">@na</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘t</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">t</td>
+	<td style="text-align:left;">@today</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:center;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:center;" colspan="4">Jekyll Liquid Tags (⌃⌘j)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:center;">⌃⌘j</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">p</td>
+	<td style="text-align:left;">Pullquote Liquid Tag</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘j</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">r</td>
+	<td style="text-align:left;">Raw Liquid Tag</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘j</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">⇧r</td>
+	<td style="text-align:left;">Raw Tag for entire paragraph</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘j</td>
+	<td style="text-align:center;"></td>
+	<td style="text-align:center;">`</td>
+	<td style="text-align:left;">Fence code</td>
 </tr>
 </tbody>
 </table>
