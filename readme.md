@@ -786,7 +786,7 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">p</td>
+	<td style="text-align:center;">s</td>
 	<td style="text-align:left;">SearchLink Syntax: Software (new)</td>
 </tr>
 <tr>
