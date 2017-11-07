@@ -10,7 +10,7 @@ See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
 <b>Installation</b>: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist).
 Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
 
-<b>Documentation</b> <i>(last updated 07/12/2017.)</i>
+<b>Documentation</b> <i>(last updated 11/07/2017.)</i>
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 
@@ -810,7 +810,7 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 	<td style="text-align:center;">⌃⌘g</td>
 	<td style="text-align:center;"></td>
-	<td style="text-align:center;">⌘</td>
+	<td style="text-align:center;">t</td>
 	<td style="text-align:left;">SearchLink Syntax: Twitter User (new)</td>
 </tr>
 </tbody>

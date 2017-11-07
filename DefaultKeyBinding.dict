@@ -372,7 +372,7 @@
     // SearchLink Syntax: BrettTerpstra.com Projects (new)
     "p" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!btp)", moveRight:, deleteBackward:, moveLeft:);
     // SearchLink Syntax: Twitter User (new)
-    "@" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!@t)", moveRight:, deleteBackward:, moveLeft:);
+    "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!@t)", moveRight:, deleteBackward:, moveLeft:);
   };
 
   // repeat character before cursor
