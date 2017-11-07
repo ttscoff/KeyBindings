@@ -364,7 +364,7 @@
       // "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
     };
     // SearchLink Syntax: Software (new)
-    "p" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!s)", moveRight:, deleteBackward:, moveLeft:);
+    "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!s)", moveRight:, deleteBackward:, moveLeft:);
     // SearchLink Syntax: IMDB (new)
     "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!imdb)", moveRight:, deleteBackward:, moveLeft:);
     // SearchLink Syntax: BrettTerpstra.com (new)
