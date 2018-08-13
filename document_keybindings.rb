@@ -124,7 +124,7 @@ input.split("\n").each {|line|
     if level == 1
       group_command = translate_command($1)
       group_desc = $2
-      output += "\n|#{group_desc} (#{group_command})||||\n|:----:|:----:|:----:|:----|\n"
+      output += "\n\n|#{group_desc} (#{group_command})||||\n|:----:|:----:|:----:|:----|\n"
     elsif level == 2
       subgroup_command = translate_command($1)
       subgroup_desc = $2
@@ -153,7 +153,11 @@ toplevel.each {|line|
 
 # output = style + topoutput + output
 output = topoutput + output
-
+File.open('keybindings.md','w') {|f|
+  f.puts intro
+  f.puts output
+  f.puts outro
+}
 htmlout = %x{echo #{e_sh output}|/usr/local/bin/multimarkdown}
 
 outfile = File.new('readme.md','w')

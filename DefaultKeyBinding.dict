@@ -10,14 +10,14 @@
   // lowercase word
   "^~u" = (lowercaseWord:, moveWordForward:, moveWordBackward:);
   // titlecase word
-  // "^T" = (capitalizeWord:, moveWordForward:, moveWordBackward:);
+  "^~t" = (capitalizeWord:, moveWordForward:, moveWordBackward:);
 
   // uppercase current paragraph
   "^~U" = (setMark:, selectParagraph:, uppercaseWord:, swapWithMark:);
   // lowercase current paragraph
   // "^~u" = (setMark:, selectParagraph:, lowercaseWord:, swapWithMark:);
   // titlecase paragraph
-  // "^~t" = (setMark:, selectParagraph:, capitalizeWord:, swapWithMark:);
+  "^~T" = (setMark:, selectParagraph:, capitalizeWord:, swapWithMark:);
 
   // delete word before cursor
   "^w" = (deleteWordBackward:);
@@ -55,24 +55,13 @@
   // blank line before current
   "~O" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
 
-
-  // // move line up
-  // "^@k" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
-  // // move line down
-  // "^@j" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
-  // // indent line
-  // "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
-  // // outdent line (one tab or char)
-  // "^@h" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
-
-  // > same commands but with arrow keys
-  // move line up
+  // Move line up
   "^@\UF700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
-  // move line down
+  // Move line down
   "^@\UF701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
-  // indent line
+  // Indent line
   "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
-  // outdent line (one tab or char)
+  // Outdent line (one tab or char)
   "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > Control-shift-command-left arrow
@@ -124,9 +113,15 @@
   "$~\040" = (insertText:, " ", moveForward:, insertText:, " ", moveWordBackward:, capitalizeWord:, moveForward:, deleteForward:, moveBackward:);
   // Uppercase next character (Control-Shift-Space)
   "^$\040" = (insertText:, " ", moveForward:, insertText:, " ", moveWordBackward:, capitalizeWord:, moveForward:, deleteForward:, moveBackward:, deleteBackward:, moveForward:);
+  // Move cursor forward with spacebar (shift-space)
+  "$\040" = (moveForward:);
 
-  // Restore escape-to-complete on Sierra (breaks standard cancelOperation: functionality)
-  // "\U001B" = (complete:);
+  "^~c" = { // multi-stroke casing commands
+    // snake_case to camelCase (delete forward and capitalize)
+    "c" = (deleteForward:, insertText:, " ", moveForward:, insertText:, " ", moveWordBackward:, capitalizeWord:, moveForward:, deleteForward:, moveBackward:, deleteBackward:, moveForward:);
+    // snake_case word break
+    "s" = (insertText:, "_ " , moveForward:, insertText:, " ", moveWordBackward:, lowercaseWord:, moveForward:, deleteForward:, moveBackward:, deleteBackward:);
+  };
 
   // > this will kill non alphanumeric symbols and punctuation, use only on *words*
   // hyphenate next space and move to next word
