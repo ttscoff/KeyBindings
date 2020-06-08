@@ -12,6 +12,11 @@
   // titlecase word
   "^~t" = (capitalizeWord:, moveWordForward:, moveWordBackward:);
 
+  // Home Button
+  "\UF729" = "moveToBeginningOfLine:"; 
+  // End Button 
+  "\UF72B" = "moveToEndOfLine:"; 
+
   // uppercase current paragraph
   "^~U" = (setMark:, selectParagraph:, uppercaseWord:, swapWithMark:);
   // lowercase current paragraph
