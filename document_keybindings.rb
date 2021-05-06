@@ -3,6 +3,7 @@
 
 require 'rubygems'
 require 'shellwords'
+require 'fileutils'
 
 def class_exists?(class_name)
   klass = Module.const_get(class_name)
@@ -39,6 +40,39 @@ td:last-child { font-weight:normal;width:auto }
 </style>
 
 STYLE
+
+blogintro =<<BLOGINTRO
+---
+layout: page
+title: KeyBindings
+project_tag: keybindings
+icon: /images/projecticons/keybindings.png
+info: My OS X KeyBindings experiments.
+ranking: 5
+updated: #{Time.now.strftime('%Y-%m-%d')}
+tags:
+- mac
+- utilities
+- text
+---
+[support]: https://github.com/ttscoff/KeyBindings/issues
+[gh]: http://github.com/ttscoff/KeyBindings
+
+* [Support][]
+* [Brett's KeyBindings on GitHub][gh]
+{:.linkblock}
+
+BLOGINTRO
+
+blogoutro =<<BLOGOUTRO
+
+{% donate "You're bound to want to help out" %}
+
+* [Support][]
+* [Brett's KeyBindings on GitHub][gh]
+{:.linkblock}
+
+BLOGOUTRO
 
 intro =<<INTRO
 DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys].
@@ -152,16 +186,23 @@ toplevel.each {|line|
 # topoutput += "[ General Commands ]\n\n"
 
 # output = style + topoutput + output
+
+
 output = topoutput + output
-File.open('keybindings.md','w') {|f|
-  f.puts intro
-  f.puts output
-  f.puts outro
-}
 htmlout = %x{echo #{e_sh output}|/usr/local/bin/multimarkdown}
+
+File.open('keybindings.md','w') {|f|
+  f.puts blogintro
+  f.puts intro + htmlout + outro
+  f.puts blogoutro
+}
 
 outfile = File.new('readme.md','w')
 outfile.puts intro
 outfile.puts htmlout
 outfile.puts outro
 outfile.close
+
+if ENV['USER'] == 'ttscoff'
+  FileUtils.cp('keybindings.md',File.expand_path('~/Sites/dev/bt/source/_projects'))
+end
