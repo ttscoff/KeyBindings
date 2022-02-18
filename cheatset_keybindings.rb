@@ -236,9 +236,11 @@ options = {
 }
 
 opt_parser = OptionParser.new do |opt|
-  opt.banner = "Usage: #{File.basename(__FILE__)} [options] [DefaultKeyBinding.dict]\nIf dict file is not specified, ~/Library/KeyBindings/DefaultKeyBinding.dict will be used"
-  opt.separator  ""
-  opt.separator  "Options:"
+  opt.banner = %(Usage: #{File.basename(__FILE__)} [options] [DefaultKeyBinding.dict]
+
+If dict file is not specified, ~/Library/KeyBindings/DefaultKeyBinding.dict will be used)
+  opt.separator  ''
+  opt.separator  'Options:'
 
   opt.on('-f', '--format=FORMAT', 'Format for modifier keys: "symbol" or "name" (default)') do |fmt|
     options[:format] = fmt =~ /^s/i ? :symbol : :name

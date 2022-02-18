@@ -75,19 +75,18 @@ blogoutro =<<BLOGOUTRO
 BLOGOUTRO
 
 intro =<<INTRO
-DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys].
-Please note that these bindings won't work in all applications: TextWrangler and TextMate, for example, override these with their own settings.
-See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
+DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][]
+and based heavily on work done by Lri. Please note that these bindings won't work in all applications: TextWrangler
+and TextMate, for example, override these with their own settings.
 
-[lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
-[lriweb]: http://www.cs.helsinki.fi/u/lranta/
-[lrigists]: https://gist.github.com/Lri
-[Brett Terpstra]: http://brettterpstra.com
+**Installation**: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings`
+if it doesn't already exist). Any open applications will need to be re-started before the key bindings will take
+effect --- or log out and log back in.
 
-<b>Installation</b>: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist).
-Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
+The repository includes a script to generate a Dash docset from your customized version of the file.
+[See here for details.](https://brettterpstra.com/2022/02/18/keybindings-cheat-sheet-for-dash/)
 
-<b>Documentation</b> <i>(last updated #{date}.)</i>
+**Documentation** _(last updated #{date}.)_
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 

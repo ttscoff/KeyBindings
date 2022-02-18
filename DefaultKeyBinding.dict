@@ -5,16 +5,16 @@
   // > defaults write -g NSTextKillRingSize -int 6
   // replace yank: command with yankAndSelect for use with the kill ring
   "^y" = (yankAndSelect:);
-  // uppercase word
+  // Uppercase word
   "^U" = (uppercaseWord:, moveWordForward:, moveWordBackward:);
-  // lowercase word
+  // Lowercase word
   "^~u" = (lowercaseWord:, moveWordForward:, moveWordBackward:);
-  // titlecase word
+  // Titlecase word
   "^~t" = (capitalizeWord:, moveWordForward:, moveWordBackward:);
 
-  // uppercase current paragraph
+  // Uppercase current paragraph
   "^~U" = (setMark:, selectParagraph:, uppercaseWord:, swapWithMark:);
-  // lowercase current paragraph
+  // Lowercase current paragraph
   // "^~u" = (setMark:, selectParagraph:, lowercaseWord:, swapWithMark:);
   // titlecase paragraph
   "^~T" = (setMark:, selectParagraph:, capitalizeWord:, swapWithMark:);
@@ -156,7 +156,8 @@
   "@~i" = (selectWord:, setMark:, swapWithMark:, deleteToMark:, insertText:, "_", yank:, insertText:, " ", moveLeft:, insertText:, "_", moveRight:, deleteBackward:);
   // backtick selection (Markdown)
   "@~`" = (selectWord:, setMark:, swapWithMark:, deleteToMark:, insertText:, "`", yank:, insertText:, " ", moveLeft:, insertText:, "`", moveRight:, deleteBackward:);
-  // break line with double space (Markdown) (Control-Command-Return)
+  // > Control-Command-Return
+  // break line with double space (Markdown)
   "^@\U000D" = (insertText:, "  ", insertNewline:);
 
   // increase markdown header level
@@ -175,8 +176,6 @@
   // "^~@\U000D" = (insertText:, "  ", insertNewline:);
 
   "^@w" = { // Multi-stroke Markdown commands
-    // Fence code (new)
-    // "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
     // force carriage return in text field
     "\U000A" = (insertNewlineIgnoringFieldEditor:);
     // force tab in text field
@@ -186,7 +185,7 @@
     // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
     // Fence code (new)
-    // "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
+    "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
     // Unordered list item with +
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
     // Unordered list item with -
@@ -229,7 +228,7 @@
       "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "https://", selectToMark:); //  image link for text
       // same as lc, but with image syntax `\!\[selected text](clipboard)`
       "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
-      // same as lc, but with image syntax and "+" for Droplr links `\!\[selected text](clipboard+)`
+      // same as lc, but with image syntax and "+" for Droplr links `![selected text](clipboard+)`
       "d" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, "+)", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
     };
 
@@ -239,7 +238,6 @@
       // create a reference from selected text, clipboard as url
       "c" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", pasteAsPlainText:, moveRight:, deleteBackward:, swapWithMark:);
     };
-
   };
 
   "^@e" = { // HTML commands

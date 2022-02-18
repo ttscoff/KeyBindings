@@ -1,16 +1,15 @@
-DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][] and based heavily on work done by [Lri][lrikeys].
-Please note that these bindings won't work in all applications: TextWrangler and TextMate, for example, override these with their own settings.
-See Lri's [gists][lrigists] and [website][lriweb] for more coding madness.
+DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][]
+and based heavily on work done by Lri. Please note that these bindings won't work in all applications: TextWrangler
+and TextMate, for example, override these with their own settings.
 
-[lrikeys]: http://www.cs.helsinki.fi/u/lranta/keybindings/
-[lriweb]: http://www.cs.helsinki.fi/u/lranta/
-[lrigists]: https://gist.github.com/Lri
-[Brett Terpstra]: http://brettterpstra.com
+**Installation**: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings`
+if it doesn't already exist). Any open applications will need to be re-started before the key bindings will take
+effect --- or log out and log back in.
 
-<b>Installation</b>: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings` if it doesn't already exist).
-Any open applications will need to be re-started before the key bindings will take effect -- or log out and log back in.
+The repository includes a script to generate a Dash docset from your customized version of the file.
+[See here for details.](https://brettterpstra.com/2022/02/18/keybindings-cheat-sheet-for-dash/)
 
-<b>Documentation</b> <i>(last updated 08/13/2018.)</i>
+**Documentation** _(last updated 02/18/2022.)_
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 
@@ -37,19 +36,19 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⇧u</td>
-	<td style="text-align:left;">uppercase word </td>
+	<td style="text-align:left;">Uppercase word </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌥u</td>
-	<td style="text-align:left;">lowercase word </td>
+	<td style="text-align:left;">Lowercase word </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌥t</td>
-	<td style="text-align:left;">titlecase word </td>
+	<td style="text-align:left;">Titlecase word </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌥⇧u</td>
-	<td style="text-align:left;">uppercase current paragraph </td>
+	<td style="text-align:left;">Uppercase current paragraph </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌥⇧t</td>
@@ -249,7 +248,7 @@ Any open applications will need to be re-started before the key bindings will ta
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘↩</td>
-	<td style="text-align:left;">break line with double space (Markdown) (Control-Command-Return) </td>
+	<td style="text-align:left;">break line with double space (Markdown) ( Control-Command-Return)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌘⌥=</td>
@@ -408,6 +407,12 @@ Any open applications will need to be re-started before the key bindings will ta
 <tr>
 	<td style="text-align:center;">⌃⌘w </td>
 	<td style="text-align:center;"> </td>
+	<td style="text-align:center;">` </td>
+	<td style="text-align:left;">Fence code (new) </td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘w </td>
+	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">+ </td>
 	<td style="text-align:left;">Unordered list item with + </td>
 </tr>
@@ -518,7 +523,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;">⌃⌘w </td>
 	<td style="text-align:center;">i </td>
 	<td style="text-align:center;">d </td>
-	<td style="text-align:left;">same as lc, but with image syntax and &#8220;+&#8221; for Droplr links <code>\!\[selected text](clipboard+)</code> </td>
+	<td style="text-align:left;">same as lc, but with image syntax and &#8220;+&#8221; for Droplr links <code>![selected text](clipboard+)</code> </td>
 </tr>
 <tr>
 </tr>
@@ -573,7 +578,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;">⌃⌘e </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">/ </td>
-	<td style="text-align:left;">http:// </td>
+	<td style="text-align:left;">https:// </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘e </td>
@@ -588,7 +593,7 @@ Any open applications will need to be re-started before the key bindings will ta
 	<td style="text-align:center;">⌃⌘e </td>
 	<td style="text-align:center;">a </td>
 	<td style="text-align:center;">t </td>
-	<td style="text-align:left;">Insert HTML link for selected text, leave cursor in the href with &#8220;http://&#8221; selected </td>
+	<td style="text-align:left;">Insert HTML link for selected text, leave cursor in the href with &#8220;https://&#8221; selected </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘e </td>
