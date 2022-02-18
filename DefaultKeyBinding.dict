@@ -217,7 +217,7 @@
     // > make a text selection before you run them
     "l" = { // Markdown link
       // create a link for selected text, cursor between () `[selected text]([cursor])`
-      "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); // link text
+      "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "https://", selectToMark:); // link text
       // create a link for selected text, inserting clipboard as url `[[cursor]selected text](clipboard contents)`
       "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:); // link with clipboard
     };
@@ -226,7 +226,7 @@
     "i" = { // Link as image
       // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
       // same as lt, but with image syntax `\!\[selected text]([cursor])`
-      "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "http://", selectToMark:); //  image link for text
+      "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "https://", selectToMark:); //  image link for text
       // same as lc, but with image syntax `\!\[selected text](clipboard)`
       "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
       // same as lc, but with image syntax and "+" for Droplr links `\!\[selected text](clipboard+)`
@@ -247,13 +247,13 @@
       "=" = (insertText:, "=\"\"", moveLeft:);
       // entity &[cursor];
       "e" = (insertText:, "&;", moveLeft:);
-      // http://
-      "/" = (insertText:, "http://");
+      // https://
+      "/" = (insertText:, "https://");
       // Make previous word into paired HTML tag
       "t" = ( "setMark:", "moveWordBackward:", "deleteToMark:", "insertText:", "<", "yank:", "insertText:", ">", "setMark:", "insertText:", "</", "yank:", "insertText:", ">", "swapWithMark:");
       "a" = { // HTML Links
-          // Insert HTML link for selected text, leave cursor in the href with "http://" selected
-          "t" = ( setMark:, swapWithMark:, deleteToMark:, insertText:, "<a href=\"", setMark:, insertText:, "\">", yank:, insertText:, "</a>", swapWithMark:, setMark:, insertText:, "http://", selectToMark: );
+          // Insert HTML link for selected text, leave cursor in the href with "https://" selected
+          "t" = ( setMark:, swapWithMark:, deleteToMark:, insertText:, "<a href=\"", setMark:, insertText:, "\">", yank:, insertText:, "</a>", swapWithMark:, setMark:, insertText:, "https://", selectToMark: );
           // Insert HTML link with clipboard as href
           "c" = ( setMark:, swapWithMark:, deleteToMark:, insertText:, "<a href=\"", paste:, insertText:, "\">", yank:, insertText:, "</a>" );
       };
