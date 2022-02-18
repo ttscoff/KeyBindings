@@ -184,7 +184,7 @@
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
     // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
-    // Fence code (new)
+    // Fence code
     "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
     // Unordered list item with +
     "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
@@ -324,47 +324,47 @@
   // };
   //
   "^@j" = { // Jekyll Shortcuts
-    // Pullquote Liquid Tag (new)
+    // Pullquote Liquid Tag
     "p" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {\"", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "\"}", moveRight:, moveRight:, deleteBackward:, moveToBeginningOfParagraph:, insertText:, "{% pullquote %}\n", moveToEndOfParagraph:, insertText:, "\n{% endpullquote %}");
-    // Raw Liquid Tag (new)
+    // Raw Liquid Tag
     "r" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {% raw %}", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "{% endraw %} ", moveRight:, deleteBackward:, deleteBackward:);
-    // Raw Tag for entire paragraph (new)
+    // Raw Tag for entire paragraph
     "R" = (setMark:, moveToBeginningOfParagraph:, insertText:, "{% raw %}\n", moveToEndOfParagraph:, insertText:, "\n{% endraw %}", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
   };
 
   "^@t" = { // TaskPaper Tags
-    // @done (new)
+    // @done
     "d" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @done", swapWithMark:);
-    // @priority() (new)
+    // @priority()
     "p" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @priority()", moveLeft:);
-    // @na (new)
+    // @na
     "n" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @na", swapWithMark:);
-    // @today (new)
+    // @today
     "t" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @today", swapWithMark:);
   };
 
   "^@g" = { // SearchLink commands
-    // SearchLink Syntax: Google (new)
+    // SearchLink Syntax: Google
     "g" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: Amazon (new)
+    // SearchLink Syntax: Amazon
     "A" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!a)", moveRight:, deleteBackward:, moveLeft:);
     "a" = { // Apple
-      // SearchLink Syntax: iOS App (new)
+      // SearchLink Syntax: iOS App
       "i" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!itu)", moveRight:, deleteBackward:, moveLeft:);
-      // SearchLink Syntax: Mac App Store (new)
+      // SearchLink Syntax: Mac App Store
       "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!mas)", moveRight:, deleteBackward:, moveLeft:);
       // SearchLink Syntax: Apple Music
       // "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
     };
-    // SearchLink Syntax: Software (new)
+    // SearchLink Syntax: Software
     "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!s)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: IMDB (new)
+    // SearchLink Syntax: IMDB
     "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!imdb)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: BrettTerpstra.com (new)
+    // SearchLink Syntax: BrettTerpstra.com
     "b" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!bt)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: BrettTerpstra.com Projects (new)
+    // SearchLink Syntax: BrettTerpstra.com Projects
     "p" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!btp)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: Twitter User (new)
+    // SearchLink Syntax: Twitter User
     "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!@t)", moveRight:, deleteBackward:, moveLeft:);
   };
 

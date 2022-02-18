@@ -428,7 +428,7 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘w </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">` </td>
-	<td style="text-align:left;">Fence code (new) </td>
+	<td style="text-align:left;">Fence code </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w </td>
@@ -740,19 +740,19 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘j </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">p </td>
-	<td style="text-align:left;">Pullquote Liquid Tag (new) </td>
+	<td style="text-align:left;">Pullquote Liquid Tag </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘j </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">r </td>
-	<td style="text-align:left;">Raw Liquid Tag (new) </td>
+	<td style="text-align:left;">Raw Liquid Tag </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘j </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">⇧r </td>
-	<td style="text-align:left;">Raw Tag for entire paragraph (new) </td>
+	<td style="text-align:left;">Raw Tag for entire paragraph </td>
 </tr>
 </tbody>
 </table>
@@ -776,25 +776,25 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘t </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">d </td>
-	<td style="text-align:left;">@done (new) </td>
+	<td style="text-align:left;">@done </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘t </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">p </td>
-	<td style="text-align:left;">@priority() (new) </td>
+	<td style="text-align:left;">@priority() </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘t </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">n </td>
-	<td style="text-align:left;">@na (new) </td>
+	<td style="text-align:left;">@na </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘t </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">t </td>
-	<td style="text-align:left;">@today (new) </td>
+	<td style="text-align:left;">@today </td>
 </tr>
 </tbody>
 </table>
@@ -818,13 +818,13 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">g </td>
-	<td style="text-align:left;">SearchLink Syntax: Google (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: Google </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">⇧a </td>
-	<td style="text-align:left;">SearchLink Syntax: Amazon (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: Amazon </td>
 </tr>
 <tr>
 	<td style="text-align:center;" colspan="4">Apple (a)</td>
@@ -833,13 +833,13 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;">a </td>
 	<td style="text-align:center;">i </td>
-	<td style="text-align:left;">SearchLink Syntax: iOS App (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: iOS App </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;">a </td>
 	<td style="text-align:center;">m </td>
-	<td style="text-align:left;">SearchLink Syntax: Mac App Store (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: Mac App Store </td>
 </tr>
 <tr>
 </tr>
@@ -847,31 +847,31 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">s </td>
-	<td style="text-align:left;">SearchLink Syntax: Software (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: Software </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">m </td>
-	<td style="text-align:left;">SearchLink Syntax: IMDB (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: IMDB </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">b </td>
-	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">p </td>
-	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com Projects (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: BrettTerpstra.com Projects </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘g </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">t </td>
-	<td style="text-align:left;">SearchLink Syntax: Twitter User (new) </td>
+	<td style="text-align:left;">SearchLink Syntax: Twitter User </td>
 </tr>
 </tbody>
 </table>
