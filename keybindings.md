@@ -531,13 +531,13 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘w </td>
 	<td style="text-align:center;">i </td>
 	<td style="text-align:center;">t </td>
-	<td style="text-align:left;">same as lt, but with image syntax <code>\!\[selected text]([cursor])</code> </td>
+	<td style="text-align:left;">same as lt, but with image syntax <code>![selected text]([cursor])</code> </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w </td>
 	<td style="text-align:center;">i </td>
 	<td style="text-align:center;">c </td>
-	<td style="text-align:left;">same as lc, but with image syntax <code>\!\[selected text](clipboard)</code> </td>
+	<td style="text-align:left;">same as lc, but with image syntax <code>![selected text](clipboard)</code> </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘w </td>
@@ -782,7 +782,7 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:center;">⌃⌘t </td>
 	<td style="text-align:center;"> </td>
 	<td style="text-align:center;">p </td>
-	<td style="text-align:left;">// @priority() (new) </td>
+	<td style="text-align:left;">@priority() (new) </td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘t </td>

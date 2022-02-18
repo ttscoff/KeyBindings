@@ -224,9 +224,9 @@
     "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!)", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "g", selectToMark:); // link text
     "i" = { // Link as image
       // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
-      // same as lt, but with image syntax `\!\[selected text]([cursor])`
+      // same as lt, but with image syntax `![selected text]([cursor])`
       "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "https://", selectToMark:); //  image link for text
-      // same as lc, but with image syntax `\!\[selected text](clipboard)`
+      // same as lc, but with image syntax `![selected text](clipboard)`
       "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
       // same as lc, but with image syntax and "+" for Droplr links `![selected text](clipboard+)`
       "d" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, "+)", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
@@ -335,7 +335,7 @@
   "^@t" = { // TaskPaper Tags
     // @done (new)
     "d" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @done", swapWithMark:);
-    // // @priority() (new)
+    // @priority() (new)
     "p" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @priority()", moveLeft:);
     // @na (new)
     "n" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @na", swapWithMark:);
