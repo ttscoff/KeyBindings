@@ -3,6 +3,7 @@
 
 require 'shellwords'
 require 'fileutils'
+require 'optparse'
 
 def class_exists?(class_name)
   klass = Module.const_get(class_name)
@@ -32,10 +33,11 @@ end
 class DashGenerator
   attr_writer :modifier_format
 
-  def initialize(modifier_format = :symbol)
-    @modifier_format = modifier_format
+  def initialize(options)
+    @options = options
 
-    infile = 'DefaultKeyBinding.dict'
+    infile = @options[:bindings_file]
+
     begin
       @input = IO.read(infile).force_encoding('utf-8')
     rescue
@@ -132,7 +134,7 @@ class DashGenerator
   end
 
   def translate_command(str)
-    case @modifier_format
+    case @options[:format]
     when :symbol
       translate_command_symbol(str)
     else
@@ -187,12 +189,12 @@ EOCAT
   def create_cheatsheet
     out = <<EOCHEAT
   cheatsheet do
-    title 'Keybindings'
-    docset_file_name 'Keybindings'
+    title '#{@options[:title]}'
+    docset_file_name '#{@options[:title].gsub(/ +/, '')}'
     keyword 'kb'
     # resources 'resources_dir'
 
-    introduction 'Brett\\'s macOS Keybindings'
+    introduction '#{@options[:description]}'
 EOCHEAT
 
     out += create_category(@bindings)
@@ -208,17 +210,65 @@ EOCHEAT
 
   def render
     parse
-    target = File.expand_path('keybindings-dash.rb')
+    target = File.expand_path(@options[:path])
     File.open(target, 'w') { |f| f.puts create_cheatsheet }
-    `cheatset generate "#{target}"`
-    `open Keybindings.docset`
+
+    if @options[:save]
+      $stdout.puts %(Template saved. Generate a docset with `cheatset generate "#{target}"`)
+    else
+      docset = File.expand_path("#{@options[:title].gsub(/ +/, '')}.docset")
+      `cheatset generate "#{target}"`
+      FileUtils.rm(target)
+      $stdout.puts %(Docset generated: #{docset})
+      `open "#{docset}"` if @options[:open]
+    end
   end
 end
 
-modifier_format = if ARGV.count.positive?
-                    ARGV[0] =~ /^s/i ? :symbol : :name
-                  else
-                    :name
-                  end
+options = {
+  format: :name,
+  save: false,
+  path: File.expand_path('keybindings-dash.rb'),
+  open: false,
+  title: 'Keybindings',
+  description: 'Brett\\\'s Key Bindings',
+  bindings_file: File.expand_path('~/Library/KeyBindings/DefaultKeyBinding.dict')
+}
 
-DashGenerator.new(modifier_format).render
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: #{File.basename(__FILE__)} [options] [DefaultKeyBinding.dict]\nIf dict file is not specified, ~/Library/KeyBindings/DefaultKeyBinding.dict will be used"
+  opt.separator  ""
+  opt.separator  "Options:"
+
+  opt.on('-f', '--format=FORMAT', 'Format for modifier keys: "symbol" or "name" (default)') do |fmt|
+    options[:format] = fmt =~ /^s/i ? :symbol : :name
+  end
+
+  opt.on('--save=FILE', 'Save cheatset template to file (don\'t generate docset automatically)') do |path|
+    options[:save] = true
+    options[:path] = File.expand_path(path)
+  end
+
+  opt.on('-d', '--description=FILE', 'Description of cheat sheet') do |desc|
+    options[:description] = desc
+  end
+
+  opt.on('-t', '--title=TITLE', 'Description of cheat sheet') do |title|
+    options[:title] = title
+  end
+
+  opt.on('-o', '--open', 'Open the docset in Dash after generating') do
+    options[:open] = true
+  end
+
+  opt.on('-h', '--help', 'Display help') do
+    puts opt_parser
+    exit
+  end
+end
+
+opt_parser.parse!
+
+options[:bindings_file] = File.expand_path(ARGV[0]) if ARGV.count.positive?
+
+DashGenerator.new(options).render
