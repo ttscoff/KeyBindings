@@ -12,6 +12,14 @@ rescue NameError
   return false
 end
 
+class ::String
+  def cap_first
+    sub(/^\w/) do |m|
+      m.upcase
+    end
+  end
+end
+
 if class_exists? 'Encoding'
   Encoding.default_external = Encoding::UTF_8 if Encoding.respond_to?('default_external')
   Encoding.default_internal = Encoding::UTF_8 if Encoding.respond_to?('default_internal')
@@ -109,7 +117,7 @@ subgroup_desc = ''
 desc = ''
 command = ''
 skip = false
-note = ''
+note = []
 
 def e_sh(str)
  #  rx = Regexp.new '(?=[^a-zA-Z0-9_.\/\-\x7F-\xFF\n])', nil, 'n'
@@ -117,14 +125,14 @@ def e_sh(str)
   Shellwords.escape(str)
 end
 
-def translate_command(str)
+def translate_command(str, note: false)
   str = str.gsub(/~/,'⌥').gsub(/@/,'⌘').gsub(/\$/,'⇧').gsub(/\^/,'⌃')
   str = str.gsub('\UF700','↑').gsub('\UF701','↓').gsub('\UF703','→').gsub('\UF702','←')
   str = str.gsub('\U0009','⇥').gsub('\U000D','↩').gsub('\U001B','⎋').gsub('\U000A','␍')
   str = str.gsub('\UF728','⌦').gsub('\177','⌫')
   str = str.gsub('\040','␣')
-  str = str.gsub(/([\[\]|])/,'\\\\\1')
-  str = str.gsub(/([A-Z])/,'⇧\\1').downcase
+  str = str.gsub(/([\[\]|])/,'\\\\\1') unless note
+  str = str.gsub(/([A-Z])/,'⇧\\1').downcase unless note
   str
 end
 
@@ -132,50 +140,49 @@ end
 # input.gsub!(/```/,'\`\`\`')
 
 input.split("\n").each {|line|
-
-  if line =~ /^\s*$/ || line =~ /^\s*\/\/\s*(TODO)/
+  if line =~ /^\s*$/ || line =~ %r{^\s*//\s*(TODO)}
     next
-  elsif line =~ /^\s*\/\/\s*>\s*(.*)$/
-    note += " " + $1
+  elsif line =~ %r{^\s*//\s*>\s*(.*)$}
+    note << Regexp.last_match(1)
   elsif line =~ /^\s*\};\s*$/
     level -= 1
     if level == 1
       subgroup_command = ''
       subgroup_desc = ''
       output += "|||||\n"
-    elsif level == 0
+    elsif level.zero?
       # output += "[ #{group_desc} ]\n\n"
       group_command = ''
       group_desc = ''
     end
     next
-  elsif line =~ /^\s*\/\/\s*(.*)/
-    desc = $1
+  elsif line =~ %r{^\s*//\s*(.*)}
+    desc = Regexp.last_match(1).cap_first
     next
-  elsif line =~ /^\s*"([^"]+)"\s*=\s*\{.*?\/\/\s*(.*)/
+  elsif line =~ %r{^\s*"([^"]+)"\s*=\s*\{.*?//\s*(.*)}
     level += 1
     if level == 1
-      group_command = translate_command($1)
-      group_desc = $2
+      group_command = translate_command(Regexp.last_match(1))
+      group_desc = Regexp.last_match(2).cap_first
       output += "\n\n|#{group_desc} (#{group_command})||||\n|:----:|:----:|:----:|:----|\n"
     elsif level == 2
-      subgroup_command = translate_command($1)
-      subgroup_desc = $2
+      subgroup_command = translate_command(Regexp.last_match(1))
+      subgroup_desc = Regexp.last_match(2).cap_first
       output += "|#{subgroup_desc} (#{subgroup_command})||||\n"
     else
-      prefix = $1
+      prefix = Regexp.last_match(1)
     end
     next
   elsif line =~ /^\s*"([^"]+)"\s*=\s*\(/
-    command = translate_command($1)
-    note = "(#{note})" if note != ''
-    if level == 0
-      toplevel.push("|#{command}|#{desc} #{note}|\n")
+    command = translate_command(Regexp.last_match(1))
+    out_note = note.empty? ? '' : " (#{translate_command(note.join(' '), note: true)})"
+    if level.zero?
+      toplevel.push("|#{command}|#{desc}#{out_note}|\n")
     else
-      command = prefix + "," + command if prefix
-      output += "|#{group_command} |#{subgroup_command} |#{command} |#{desc} #{note}|\n"
+      command = "#{prefix},#{command}" if prefix
+      output += "|#{group_command} |#{subgroup_command} |#{command} |#{desc}#{out_note}|\n"
     end
-    note = ''
+    note = []
   end
 }
 topoutput = "|General Commands||\n|Key|Function|\n|:----:|:----|\n"

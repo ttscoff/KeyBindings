@@ -1,5 +1,6 @@
-// Set a binding for repeating action (e.g.: ^u, 5, right arrow)
-// > defaults write -g NSRepeatCountBinding -string "^u"
+// Set a binding for repeating action (e.g.: opt-r, 5, right arrow)
+// $ defaults write -g NSRepeatCountBinding -string "\~r"
+
 {
   // General
   // > defaults write -g NSTextKillRingSize -int 6
@@ -24,7 +25,7 @@
   // select word
   "~w" = (selectWord:);
   // select word backward and modify selection
-  "~W" = (moveWordBackwardAndModifySelection:);
+  "~W" = (setMark:, moveWordBackward:, selectToMark:);
   // select entire line/paragraph
   "~S" = (selectParagraph:);
   // select from beginning of paragraph to last character
@@ -55,13 +56,24 @@
   // blank line before current
   "~O" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
 
-  // Move line up
+
+  // // move line up
+  // "^@k" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
+  // // move line down
+  // "^@j" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
+  // // indent line
+  // "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
+  // // outdent line (one tab or char)
+  // "^@h" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
+
+  // > same commands but with arrow keys
+  // move line up
   "^@\UF700" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
-  // Move line down
+  // move line down
   "^@\UF701" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
-  // Indent line
+  // indent line
   "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
-  // Outdent line (one tab or char)
+  // outdent line (one tab or char)
   "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > Control-shift-command-left arrow
@@ -92,16 +104,22 @@
   // expand the selection left and right by word (stupid experiment)
   // "^~\UF700" = (selectWord:, moveWordBackwardAndModifySelection:, setMark:, swapWithMark:, moveWordForwardAndModifySelection:);
 
+  // > Control-option-command-left arrow
   // Move to first Alphanumeric character of line
   "@~^\UF702" = (moveToBeginningOfParagraph:,moveWordRight:, moveWordLeft:);
+  // > Control-options-left arrow
   // Move to first non-whitespace character of line
   "@~\UF702" = (moveToBeginningOfParagraph:, insertText:, " ", moveLeft:, selectWord:, moveRight:, setMark:, moveToBeginningOfParagraph:, deleteForward:, swapWithMark:, moveLeft:);
+  // > Options-shift-command-left arrow
   // Select to first word of paragraph modifying selection
   "@~$\UF702" = (setMark:,moveToBeginningOfParagraph:,moveWordRight:, moveWordLeft:, selectToMark:);
+  // > Option-shift-command-right arrow
   // Select to end of paragraph modifying selection
   "@~$\UF703" = (setMark:,moveToEndOfParagraph:,selectToMark:);
+  // > Option-command-right arrow
   // Move to last non-whitespace character of paragraph
   "~@\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveLeft:, setMark:, moveToEndOfParagraph:, deleteBackward:, swapWithMark:);
+  // > Control-option-right arrow
   // Move to end of paragraph and delete trailing whitespace
   "^~\UF703" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:);
 
@@ -114,7 +132,7 @@
   // Uppercase next character (Control-Shift-Space)
   "^$\040" = (insertText:, " ", moveForward:, insertText:, " ", moveWordBackward:, capitalizeWord:, moveForward:, deleteForward:, moveBackward:, deleteBackward:, moveForward:);
   // Move cursor forward with spacebar (shift-space)
-  "$\040" = (moveForward:);
+  "^~\040" = (moveForward:);
 
   "^~c" = { // multi-stroke casing commands
     // snake_case to camelCase (delete forward and capitalize)
@@ -184,14 +202,19 @@
     "[" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "][]", moveRight:, deleteBackward:, moveLeft:);
     // insert reference `[selection]: [cursor]`
     "]" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "]: ", moveRight:, deleteBackward:);
-    // Fence code
-    "`" = (moveToEndOfParagraph:, insertText:, "\n```", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveToBeginningOfParagraph:, insertText:, "```\n", moveLeft:);
+    // Fence code (new)
+    // > Requires text selection
+    "`" = (setMark:, swapWithMark:, deleteToMark:, insertText:, "```\n", yank:, insertText:, "\n```", swapWithMark:);
+    // Insert inline footnote marker or inline footnote (new)
+    "f" = (insertText:, "[^]", moveLeft:, setMark:, insertText:, "footnote id or inline text", selectToMark:);
     // Unordered list item with +
-    "+" = (setMark:, moveToBeginningOfParagraph:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
+    "+" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, insertText:, "+ ", swapWithMark:, moveRight:, moveRight:);
     // Unordered list item with -
-    "-" = (setMark:, moveToBeginningOfParagraph:, insertText:, "- ", swapWithMark:, moveRight:, moveRight:);
+    "-" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, insertText:, "- ", swapWithMark:, moveRight:, moveRight:);
     // Unordered list item with *
-    "*" = (setMark:, moveToBeginningOfParagraph:, insertText:, "* ", swapWithMark:, moveRight:, moveRight:);
+    "*" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, insertText:, "* ", swapWithMark:, moveRight:, moveRight:);
+    // Numeric list item (new)
+    "." = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, insertText:, "1. ", swapWithMark:, moveRight:, moveRight:, moveRight:);
     // convert current numbered list item to bullet, handles indentation
     "8" = (breakUndoCoalescing, setMark:, moveToEndOfParagraph:, insertText:, "x", moveToBeginningOfParagraph:, moveWordForward:, moveRight:, moveWordForward:, moveWordBackward:, moveWordBackwardAndModifySelection:, insertText:, "* ", moveToEndOfParagraph:, deleteBackward:, swapWithMark:, moveLeft:);
     // convert current bullet list item to numbered
@@ -224,9 +247,9 @@
     "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!)", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "g", selectToMark:); // link text
     "i" = { // Link as image
       // TODO: Apply the fix from l,t/c above to avoid inserting the kill buffer when there's no selection
-      // same as lt, but with image syntax `![selected text]([cursor])`
+      // same as lt, but with image syntax `\!\[selected text]([cursor])`
       "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "]()", moveRight:, deleteBackward:, moveLeft:, setMark:, insertText:, "https://", selectToMark:); //  image link for text
-      // same as lc, but with image syntax `![selected text](clipboard)`
+      // same as lc, but with image syntax `\!\[selected text](clipboard)`
       "c" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, ")", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
       // same as lc, but with image syntax and "+" for Droplr links `![selected text](clipboard+)`
       "d" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " ![", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, moveLeft:, insertText:, "](", setMark:, pasteAsPlainText:, insertText:, "+)", moveRight:, deleteBackward:, moveLeft:, selectToMark:);
@@ -263,25 +286,24 @@
       };
   };
   // Make selected text into paired HTML tag. Allows attributes, only dupes first word into closing tag (caveat: overwrites your pasteboard)
-  "^<" = ( setMark:, deleteToMark:, insertText:, "<", setMark:, yank:, swapWithMark:, moveWordForwardAndModifySelection:, copy:, swapWithMark:, "insertText:", ">", "setMark:", "insertText:", "</", "paste:", "insertText:", ">", "swapWithMark:");
-
+  "^<" = (setMark:, deleteToMark:, insertText:, "<", setMark:, yank:, swapWithMark:, moveWordForwardAndModifySelection:, copy:, swapWithMark:, "insertText:", ">", "setMark:", "insertText:", "</", "paste:", "insertText:", ">", "swapWithMark:");
   "^@s" = {   // Surround commands
-    // wrap () with spaces
-    "(" = (delete:, insertText:, "( ", yank:, insertText:, " ", moveLeft:, insertText:, " )", deleteForward:);
     // wrap () no spaces
-    ")" = (delete:, insertText:, "( ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, ")", deleteForward:);
-    // wrap [] with spaces
-    "[" = (delete:, insertText:, "[ ", yank:, insertText:, " ", moveLeft:, insertText:, " ]", deleteForward:);
+    "(" = (delete:, insertText:, "( ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, ")", deleteForward:);
+    // wrap () with spaces
+    ")" = (delete:, insertText:, "( ", yank:, insertText:, " ", moveLeft:, insertText:, " )", deleteForward:);
     // wrap [] no spaces
-    "]" = (delete:, insertText:, "[ ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "]", deleteForward:);
-    // wrap {} with spaces
-    "{" = (delete:, insertText:, "{ ", yank:, insertText:, " ", moveLeft:, insertText:, " }", deleteForward:);
+    "[" = (delete:, insertText:, "[ ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "]", deleteForward:);
+    // wrap [] with spaces
+    "]" = (delete:, insertText:, "[ ", yank:, insertText:, " ", moveLeft:, insertText:, " ]", deleteForward:);
     // wrap {} no spaces
-    "}" = (delete:, insertText:, "{ ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "}", deleteForward:);
-    // wrap <> with spaces
-    "<" = (delete:, insertText:, "< ", yank:, insertText:, " ", moveLeft:, insertText:, " >", deleteForward:);
+    "{" = (delete:, insertText:, "{ ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "}", deleteForward:);
+    // wrap {} with spaces
+    "}" = (delete:, insertText:, "{ ", yank:, insertText:, " ", moveLeft:, insertText:, " }", deleteForward:);
     // wrap <> no spaces
-    ">" = (delete:, insertText:, "< ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, ">", deleteForward:);
+    "<" = (delete:, insertText:, "< ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, ">", deleteForward:);
+    // wrap <> with spaces
+    ">" = (delete:, insertText:, "< ", yank:, insertText:, " ", moveLeft:, insertText:, " >", deleteForward:);
     // wrap single quotes
     "'" = (delete:, insertText:, "' ", deleteBackward:, yank:, insertText:, " ", moveLeft:, insertText:, "'", deleteForward:);
     // wrap backticks
@@ -324,52 +346,52 @@
   // };
   //
   "^@j" = { // Jekyll Shortcuts
-    // Pullquote Liquid Tag
+    // Pullquote Liquid Tag (new)
     "p" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {\"", moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "\"}", moveRight:, moveRight:, deleteBackward:, moveToBeginningOfParagraph:, insertText:, "{% pullquote %}\n", moveToEndOfParagraph:, insertText:, "\n{% endpullquote %}");
-    // Raw Liquid Tag
+    // Raw Liquid Tag (new)
     "r" = (setMark:, swapWithMark:, deleteToMark:, insertText:, " {% raw %}", moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, moveLeft:, deleteBackward:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, yank:, insertText:, " ", moveLeft:, insertText:, "{% endraw %} ", moveRight:, deleteBackward:, deleteBackward:);
-    // Raw Tag for entire paragraph
+    // Raw Tag for entire paragraph (new)
     "R" = (setMark:, moveToBeginningOfParagraph:, insertText:, "{% raw %}\n", moveToEndOfParagraph:, insertText:, "\n{% endraw %}", swapWithMark:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:, moveRight:);
   };
 
   "^@t" = { // TaskPaper Tags
-    // @done
+    // @done (new)
     "d" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @done", swapWithMark:);
-    // @priority()
+    // // @priority() (new)
     "p" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @priority()", moveLeft:);
-    // @na
+    // @na (new)
     "n" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @na", swapWithMark:);
-    // @today
+    // @today (new)
     "t" = (setMark:, moveToEndOfParagraph:, insertText:, " ", selectWord:, deleteBackward:, insertText:, " @today", swapWithMark:);
   };
 
   "^@g" = { // SearchLink commands
-    // SearchLink Syntax: Google
+    // SearchLink Syntax: Google (new)
     "g" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: Amazon
+    // SearchLink Syntax: Amazon (new)
     "A" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!a)", moveRight:, deleteBackward:, moveLeft:);
     "a" = { // Apple
-      // SearchLink Syntax: iOS App
+      // SearchLink Syntax: iOS App (new)
       "i" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!itu)", moveRight:, deleteBackward:, moveLeft:);
-      // SearchLink Syntax: Mac App Store
+      // SearchLink Syntax: Mac App Store (new)
       "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!mas)", moveRight:, deleteBackward:, moveLeft:);
       // SearchLink Syntax: Apple Music
       // "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!g)", moveRight:, deleteBackward:, moveLeft:);
     };
-    // SearchLink Syntax: Software
+    // SearchLink Syntax: Software (new)
     "s" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!s)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: IMDB
+    // SearchLink Syntax: IMDB (new)
     "m" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!imdb)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: BrettTerpstra.com
+    // SearchLink Syntax: BrettTerpstra.com (new)
     "b" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!bt)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: BrettTerpstra.com Projects
+    // SearchLink Syntax: BrettTerpstra.com Projects (new)
     "p" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!btp)", moveRight:, deleteBackward:, moveLeft:);
-    // SearchLink Syntax: Twitter User
+    // SearchLink Syntax: Twitter User (new)
     "t" = (setMark:, moveRight:, insertText:, " ", deleteToMark:, insertText:, " [", moveLeft:, deleteBackward:, moveRight:, yank:, moveLeft:, insertText:, "](!@t)", moveRight:, deleteBackward:, moveLeft:);
   };
 
   // repeat character before cursor
-  "~r" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
+  "~R" = (moveLeftAndModifySelection:, copy:, moveRight:, paste:);
   // Forward delete to end of paragraph
   "@$\UF728" = (deleteToEndOfParagraph:);
   // > Command-shift-delete
