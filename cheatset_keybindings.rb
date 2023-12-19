@@ -255,7 +255,7 @@ If dict file is not specified, ~/Library/KeyBindings/DefaultKeyBinding.dict will
     options[:description] = desc
   end
 
-  opt.on('-t', '--title=TITLE', 'Description of cheat sheet') do |title|
+  opt.on('-t', '--title=TITLE', 'Title of cheat sheet') do |title|
     options[:title] = title
   end
 
