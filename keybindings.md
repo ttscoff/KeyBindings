@@ -18,9 +18,10 @@ tags:
 * [Brett's KeyBindings on GitHub][gh]
 {:.linkblock}
 
-DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by [Brett Terpstra][]
-and based heavily on work done by Lri. Please note that these bindings won't work in all applications: TextWrangler
-and TextMate, for example, override these with their own settings.
+DefaultKeyBinding.dict file (`~/Library/KeyBindings/DefaultKeyBinding.dict`) for Mac OS X, created by
+[Brett Terpstra](https://brettterpstra.com) and based heavily on work done by Lri. Please note that these
+bindings won't work in all applications: TextWrangler and TextMate, for example, override these with their
+own settings.
 
 **Installation**: Copy the DefaultKeyBinding.dict file to the `~/Library/KeyBindings/` directory (create `KeyBindings`
 if it doesn't already exist). Any open applications will need to be re-started before the key bindings will take
