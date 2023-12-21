@@ -1,11 +1,12 @@
 // Set a binding for repeating action (e.g.: opt-r, 5, right arrow)
-// $ defaults write -g NSRepeatCountBinding -string "\~r"
-
+// $ defaults write -g NSRepeatCountBinding -string "~r"
 {
   // General
   // > defaults write -g NSTextKillRingSize -int 6
   // replace yank: command with yankAndSelect for use with the kill ring
   "^y" = (yankAndSelect:);
+  // Regular yank, only insert last register and don't select
+  "^~y" = (yank:);
   // Uppercase word
   "^U" = (uppercaseWord:, moveWordForward:, moveWordBackward:);
   // Lowercase word
@@ -34,14 +35,20 @@
   "^~S" = (moveToEndOfParagraph:, insertText:, " ", selectWord:, moveBackward:, moveToBeginningOfParagraphAndModifySelection:, moveWordForwardAndModifySelection:, moveWordBackwardAndModifySelection:);
   // delete line/paragraph
   "~d" = (selectParagraph:, delete:, moveToBeginningOfParagraph:);
+  // delete to beginning of paragraph (if this isn't already defined?)
+  "^u" = (deleteToBeginningOfParagraph:);
   // copy paragraph
   "~y" = (setMark:, moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:, copy:, swapWithMark:);
   // cut paragraph
   "~x" = (moveToBeginningOfParagraph:, moveToEndOfParagraphAndModifySelection:, cut:);
   // paste paragraph below
   "~p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, paste:);
+  // yank (from kill ring) paragraph below
+  "^~p" = (moveToEndOfParagraph:,moveRight:,insertNewline:,moveLeft:, yank:);
   // paste paragraph above
   "~P" = (moveToBeginningOfParagraph:, moveLeft:, paste:);
+  // yank (from kill ring) paragraph above
+  "^~P" = (moveToBeginningOfParagraph:, moveLeft:, yank:);
   // select to beginning of paragraph and copy
   "^A" = (moveToBeginningOfParagraphAndModifySelection:, copy:);
   // select to end of paragraph and copy
@@ -56,15 +63,14 @@
   // blank line before current
   "~O" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
 
-
-  // // move line up
-  // "^@k" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
-  // // move line down
-  // "^@j" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
-  // // indent line
-  // "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
-  // // outdent line (one tab or char)
-  // "^@h" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
+  // move line up
+  "^@k" = (selectParagraph:, setMark:, deleteToMark:, moveLeft:, moveToBeginningOfParagraph:, yank:, moveLeft:, selectToMark:, moveLeft:);
+  // move line down
+  "^@j" = (selectParagraph:, setMark:, deleteToMark:, moveToEndOfParagraph:, moveRight:, setMark:, yank:, moveLeft:, selectToMark:);
+  // indent line
+  "^@l" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
+  // outdent line (one tab or char)
+  "^@h" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > same commands but with arrow keys
   // move line up
@@ -74,7 +80,7 @@
   // indent line
   "^@\UF703" = (setMark:, moveToBeginningOfParagraph:, insertText:, "\t", swapWithMark:, moveRight:);
   // outdent line (one tab or char)
-  "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveWordRight:, moveWordLeft:, deleteBackward:, swapWithMark:, moveLeft:);
+  "^@\UF702" = (setMark:, moveToBeginningOfParagraph:, moveRight:, deleteBackward:, swapWithMark:, moveLeft:);
 
   // > Control-shift-command-left arrow
   // Full outdent - Deletes all leading space of line/paragraph (updated)

@@ -9,7 +9,7 @@ effect --- or log out and log back in.
 The repository includes a script to generate a Dash docset from your customized version of the file.
 [See here for details.](https://brettterpstra.com/2022/02/18/keybindings-cheat-sheet-for-dash/)
 
-**Documentation** _(last updated 12/19/2023.)_
+**Documentation** _(last updated 12/21/2023.)_
 
 *Grouped items begin with the groups shortcut (if exists), followed by a subgroup (if exists) followed by the keys specified.*
 
@@ -33,6 +33,10 @@ The repository includes a script to generate a Dash docset from your customized 
 <tr>
 	<td style="text-align:center;">⌃y</td>
 	<td style="text-align:left;">Replace yank: command with yankAndSelect for use with the kill ring (defaults write -g NSTextKillRingSize -int 6)</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌥y</td>
+	<td style="text-align:left;">Regular yank, only insert last register and don&#8217;t select</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⇧u</td>
@@ -83,6 +87,10 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:left;">Delete line/paragraph</td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃u</td>
+	<td style="text-align:left;">Delete to beginning of paragraph (if this isn&#8217;t already defined?)</td>
+</tr>
+<tr>
 	<td style="text-align:center;">⌥y</td>
 	<td style="text-align:left;">Copy paragraph</td>
 </tr>
@@ -95,8 +103,16 @@ The repository includes a script to generate a Dash docset from your customized 
 	<td style="text-align:left;">Paste paragraph below</td>
 </tr>
 <tr>
+	<td style="text-align:center;">⌃⌥p</td>
+	<td style="text-align:left;">Yank (from kill ring) paragraph below</td>
+</tr>
+<tr>
 	<td style="text-align:center;">⌥⇧p</td>
 	<td style="text-align:left;">Paste paragraph above</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌥⇧p</td>
+	<td style="text-align:left;">Yank (from kill ring) paragraph above</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⇧a</td>
@@ -121,6 +137,22 @@ The repository includes a script to generate a Dash docset from your customized 
 <tr>
 	<td style="text-align:center;">⌥⇧o</td>
 	<td style="text-align:left;">Blank line before current</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘k</td>
+	<td style="text-align:left;">Move line up</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘j</td>
+	<td style="text-align:left;">Move line down</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘l</td>
+	<td style="text-align:left;">Indent line</td>
+</tr>
+<tr>
+	<td style="text-align:center;">⌃⌘h</td>
+	<td style="text-align:left;">Outdent line (one tab or char)</td>
 </tr>
 <tr>
 	<td style="text-align:center;">⌃⌘↑</td>
